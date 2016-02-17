@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	 android:layout_width="wrap_content"
+	android:gravity="center" android:layout_height="wrap_content" >
+	<LinearLayout android:layout_width="fill_parent" android:background="@drawable/gesture_detailshow_pop"
+		android:layout_height="fill_parent" >
+		<TextView android:id="@+id/Showtoasttext" android:layout_marginTop="40dip" android:layout_marginLeft="100dip"
+			android:layout_marginBottom ="40px" android:layout_marginRight="60dip"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:textColor="#ff000000" android:textSize="24sp" />
+	</LinearLayout>
+</LinearLayout>

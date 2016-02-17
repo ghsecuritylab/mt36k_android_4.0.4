@@ -1,0 +1,41 @@
+---- ntfs_allowed_access Æ¥Åä (40 ÔÚ 4 ÎÄ¼þ ) ----
+Lowntfs-3g.c (src):#define ntfs_real_allowed_access(scx, ni, type) ntfs_allowed_access(scx, ni, type)
+Lowntfs-3g.c (src):#define ntfs_allowed_access(scx, ni, type) \
+Lowntfs-3g.c (src):	    ? 1 : ntfs_allowed_access(scx, ni, type))
+Lowntfs-3g.c (src):	allowed = ntfs_allowed_access(scx, dir_ni, accesstype);
+Lowntfs-3g.c (src):			    && !ntfs_allowed_access(&security,dir_ni,S_IEXEC)) {
+Lowntfs-3g.c (src):			if (!ntfs_allowed_access(&security,ni,accesstype))
+Lowntfs-3g.c (src):				if (!ntfs_allowed_access(&security,
+Lowntfs-3g.c (src):	    && !ntfs_allowed_access(scx, ni, S_IWRITE)) {
+Lowntfs-3g.c (src):			&& ntfs_allowed_access(scx, ni, S_IWRITE))) {
+Lowntfs-3g.c (src):			&& ntfs_allowed_access(scx, ni, S_IWRITE);
+Lowntfs-3g.c (src):			&& ntfs_allowed_access(scx, ni, S_IWRITE);
+Lowntfs-3g.c (src):				if (!ntfs_allowed_access(&security,
+Lowntfs-3g.c (src):	       || ntfs_allowed_access(&security,
+Lowntfs-3g.c (src):	    && !ntfs_allowed_access(&security,dir_ni,S_IWRITE + S_IEXEC))
+Lowntfs-3g.c (src):	if (!ntfs_allowed_access(&security,ni,S_IREAD)) {
+Lowntfs-3g.c (src):				if (ntfs_allowed_access(&security,ni,S_IREAD))
+Lowntfs-3g.c (src):	if (!ntfs_allowed_access(&security, ni, S_IREAD)) {
+Lowntfs-3g.c (src):		if (!ntfs_allowed_access(&security,ni,S_IWRITE)) {
+Lowntfs-3g.c (src):		if (!ntfs_allowed_access(&security,ni,S_IWRITE)) {
+Ntfs-3g.c (src):#define ntfs_real_allowed_access(scx, ni, type) ntfs_allowed_access(scx, ni, type)
+Ntfs-3g.c (src):#define ntfs_allowed_access(scx, ni, type) \
+Ntfs-3g.c (src):	    ? 1 : ntfs_allowed_access(scx, ni, type))
+Ntfs-3g.c (src):				     || !ntfs_allowed_access(&security,
+Ntfs-3g.c (src):				  || !ntfs_allowed_access(&security,
+Ntfs-3g.c (src):		     && !ntfs_allowed_access(&security, ni, S_IWRITE)))) {
+Ntfs-3g.c (src):					if (!ntfs_allowed_access(&security,
+Ntfs-3g.c (src):	       || ntfs_allowed_access(&security,
+Ntfs-3g.c (src):	      || !ntfs_allowed_access(&security,dir_ni,S_IWRITE + S_IEXEC)))
+Ntfs-3g.c (src):			&& ntfs_allowed_access(&security, ni, S_IWRITE))) {
+Ntfs-3g.c (src):			&& ntfs_allowed_access(&security, ni, S_IWRITE);
+Ntfs-3g.c (src):			&& ntfs_allowed_access(&security, ni, S_IWRITE);
+Ntfs-3g.c (src):	if (!ntfs_allowed_access(&security,ni,S_IREAD)) {
+Ntfs-3g.c (src):	if (!ntfs_allowed_access(&security,ni,S_IREAD)) {
+Ntfs-3g.c (src):			if (ntfs_allowed_access(&security,ni,S_IREAD)) {
+Ntfs-3g.c (src):	if (!ntfs_allowed_access(&security, ni, S_IREAD)) {
+Ntfs-3g.c (src):		if (!ntfs_allowed_access(&security,ni,S_IWRITE)) {
+Ntfs-3g.c (src):		if (!ntfs_allowed_access(&security,ni,S_IWRITE)) {
+Security.c (libntfs-3g):int ntfs_allowed_access(struct SECURITY_CONTEXT *scx,
+Security.c (libntfs-3g):			allow = ntfs_allowed_access(scx,
+Security.h (include\ntfs-3g):int ntfs_allowed_access(struct SECURITY_CONTEXT *scx,

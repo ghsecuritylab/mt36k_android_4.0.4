@@ -1,0 +1,30 @@
+LOCAL_PATH:= $(call my-dir)
+include $(CLEAR_VARS)
+
+
+# All of the source files that we will compile.
+LOCAL_SRC_FILES:= \
+ 	com_tcl_deviceinfo_TDeviceInfo.cpp 
+
+# All of the shared libraries we link against.
+LOCAL_SHARED_LIBRARIES := \
+	libcutils \
+	libhardware \
+	libhardware_legacy \
+	libnativehelper \
+	libDeviceInfoCmd
+
+
+# Also need the JNI headers.
+LOCAL_C_INCLUDES += \
+	$(JNI_H_INCLUDE) \
+	hardware/libhardware/include \
+	system/core/include \
+	external/sqlite/dist \
+	$(LOCAL_PATH)/../../../external/deviceinfo/include
+
+
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE:= libdeviceinfo_jni
+
+include $(BUILD_SHARED_LIBRARY)

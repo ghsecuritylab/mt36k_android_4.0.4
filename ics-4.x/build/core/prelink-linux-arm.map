@@ -1,0 +1,162 @@
+# 0xC0000000 - 0xFFFFFFFF Kernel
+# 0xB0100000 - 0xBFFFFFFF Thread 0 Stack
+# 0xB0000000 - 0xB00FFFFF Linker
+# 0xA0000000 - 0xBFFFFFFF Prelinked System Libraries
+# 0x90000000 - 0x9FFFFFFF Prelinked App Libraries
+# 0x80000000 - 0x8FFFFFFF Non-prelinked Libraries
+# 0x40000000 - 0x7FFFFFFF mmap'd stuff
+# 0x10000000 - 0x3FFFFFFF Thread Stacks
+# 0x00000000 - 0x0FFFFFFF .text / .data / heap
+
+# Note: The general rule is that libraries should be aligned on 1MB
+# boundaries. For ease of updating this file, you will find a comment
+# on each line, indicating the observed size of the library, which is
+# one of:
+#
+#     [<64K] observed to be less than 64K
+#     [~1M] rounded up, one megabyte (similarly for other sizes)
+#     [???] no size observed, assumed to be one megabyte
+#
+# note: look at the LOAD sections in the library header:
+#
+#   arm-linux-androideabi-objdump -x <lib>
+#
+
+# core system libraries
+libdl.so                      0xAFF00000 # [<64K]
+libc.so                       0xAFE00000 # [~1M]
+libstdc++.so                  0xAFD00000 # [<64K]
+libm.so                       0xAFC00000 # [~1M]
+liblog.so                     0xAFB00000 # [<64K]
+libcutils.so                  0xAFA00000 # [<64K]
+libz.so                       0xAF900000 # [~1M]
+libssl.so                     0xAF800000 # [~1M]
+libcrypto.so                  0xAF700000 # [~1M]
+libsysutils.so                0xAF600000 # [<64K]
+
+# bluetooth
+libdbus.so                    0xAF500000 # [~1M]
+
+# extended system libraries
+libril.so                     0xAF400000 # [<64K]
+libwpa_client.so              0xAF300000 # [<64K]
+libnetutils.so                0xAF200000 # [<64K]
+
+# core dalvik runtime support
+libandroid_servers.so         0xAF100000 # [~1M]
+libicuuc.so                   0xAF000000 # [~1M]
+libicui18n.so                 0xAEE00000 # [~2M]
+libandroid_runtime.so         0xAEC00000 # [~2M]
+libnativehelper.so            0xAEB00000 # [~1M]
+libdvm.so                     0xAEA00000 # [~1M]
+# Note: libicudata.so intentionally omitted
+libgabi++.so                  0xAE900000 # [<64K]
+
+# graphics
+libpixelflinger.so            0xAE800000 # [~1M]
+libsurfaceflinger_client.so   0xAE700000 # [<64K]
+libsurfaceflinger.so          0xAE600000 # [~1M]
+libGLES_android.so            0xAE500000 # [~1M]
+libGLESv1_CM.so               0xAE400000 # [<64K]
+libGLESv2.so                  0xAE300000 # [<64K]
+libEGL.so                     0xAE200000 # [~1M]
+libETC1.so                    0xAE100000 # [<64K]
+libGLESv2_dbg.so              0xAE000000 # [~1M]
+
+libexif.so                    0xADF00000 # [<64K]
+libcamera_client.so           0xADE00000 # [~1M]
+libui.so                      0xADD00000 # [~1M]
+libgui.so                     0xADC00000 # [~1M]
+libskia.so                    0xADA00000 # [~2M]
+librs_jni.so                  0xAD900000 # [<64K]
+libRS.so                      0xAD800000 # [~1M]
+libandroid.so                 0xAD700000 # [<64K]
+libbcinfo.so                  0xAD600000 # [~1M]
+libnfc_ndef.so                0xAD500000 # [<64K]
+libhwui.so                    0xAD400000 # [<64K] 
+
+# audio
+libeffects.so                 0xAD300000 # [<64K]
+libsoundpool.so               0xAD200000 # [<64K]
+libsonivox.so                 0xAD100000 # [~1M]
+libvorbisidec.so              0xAD000000 # [~1M]
+libmedia_jni.so               0xACF00000 # [~1M]
+libmediaplayerservice.so      0xACE00000 # [~1M]
+libmedia.so                   0xACD00000 # [~1M]
+libaudioflinger.so            0xACC00000 # [~1M]
+libliveMedia.so               0xACB00000 # [~1M]
+libdrmframework.so            0xACA00000 # [~1M]
+libfwdlockengine.so           0xAC900000 # [<64K]
+audio_policy.default.so       0xAC800000 # [<64K]
+libspeexresampler.so          0xAC700000 # [<64K]
+libtinyalsa.so                0xAC600000 # [<64K]
+libaudioutils.so              0xAC500000 # [<64K]
+
+# assorted system libraries
+libsqlite.so                  0xAC400000 # [~1M]
+libexpat.so                   0xAC300000 # [~1M]
+libwebcore.so                 0xABB00000 # [~8M]
+libbinder.so                  0xABA00000 # [~1M]
+libutils.so                   0xAB900000 # [~1M]
+libcameraservice.so           0xAB800000 # [<64K]
+libhardware.so                0xAB700000 # [<64K]
+libhardware_legacy.so         0xAB600000 # [<64K]
+libsystem_server.so           0xAB500000 # [<64K]
+libdiskconfig.so              0xAB400000 # [<64K]
+libemoji.so                   0xAB300000 # [<64K]
+libjni_pinyinime.so           0xAB200000 # [~1M]
+libmtp.so                     0xAB100000 # [~1M]
+libusbhost.so                 0xAB000000 # [<64K]
+libinput.so                   0xAAF00000 # [~1M]
+libsensorservice.so           0xAAE00000 # [~1M]
+libpowermanager.so            0xAAD00000 # [<64K]
+
+# stagefright libraries
+libstagefright_amrnb_common.so 0xAAC00000 # [<64K]
+libstagefright_avc_common.so  0xAAB00000 # [<64K]
+libstagefright_omx.so         0xAAA00000 # [~1M]
+libstagefrighthw.so           0xAA900000 # [<64K]
+libstagefright.so             0xAA700000 # [~2M]
+libstagefright_foundation.so  0xAA600000 # [<64K]
+libstagefright_soft_vorbisdec.so 0xAA500000 # [<64K]
+libstagefright_yuv.so         0xAA400000 # [<64K]
+libstagefright_enc_common.so  0xAA300000 # [<64K]
+
+# libraries for specific hardware
+camera.mt5396.so              0xAA200000 # [<64K]
+audio.primary.mt5396.so       0xAA100000 # [<64K]
+gralloc.mt5396.so             0xAA000000 # [<64K]
+hwcomposer.mt5396.so          0xA9F00000 # [<64K]
+
+# mali
+libMali.so                    0xA9E00000 # [~1M]
+libUMP.so                     0xA9D00000 # [<64K]
+libGLESv1_CM_mali.so          0xA9C00000 # [~1M]
+libGLESv2_mali.so             0xA9B00000 # [~1M]
+libEGL_mali.so                0xA9A00000 # [~1M]
+
+# blcr
+libcr_omit.so                 0xA9900000 # [<64K]
+libcr_run.so                  0xA9800000 # [<64K]
+libcr.so                      0xA9700000 # [<64K]
+
+# opencore hardware support
+
+# pv libraries
+
+# libraries for specific apps or temporary libraries
+libjpeg.so                    0x9FF00000 # [~1M]
+libiprouteutil.so             0x9FE00000 # [<64K] for external/iproute2
+libnetlink.so                 0x9FD00000 # [<64K] for external/iproute2
+libstlport.so                 0x9FC00000 # [~1M]  for external/stlport
+libbcc.so                     0x9F700000 # [~5M]  for external/llvm
+libchromium_net.so            0x9F500000 # [~2M]  for exteral/webkit
+libmtkcmpb.so                 0x9F400000 # [~1M]
+libmtal_dynamic.so            0x9F300000 # [~1M]
+libharfbuzz.so                0x9F200000 # [~1M]
+libhttplive.so                0x9F100000 # [~1M]
+libcom_mediatek_tv_jni.so     0x9F000000 # [~1M]
+libcurl.so                    0x9EF00000 # [~1M]
+librtspplayer.so              0x9EE00000 # [~1M]
+libvospplayer.so              0x9ED00000 # [~1M]
+libdtv_getline.so             0x9EC00000 # [<64K]

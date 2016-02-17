@@ -1,0 +1,697 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>银行卡解绑</title>
+<style type="text/css">
+* { margin: 0; padding: 0; }
+.main { width: 1280px; height: 720px; margin: 0 auto; text-align: left; background: url( ../img/bg2.jpg ) no-repeat center top; position: relative; }
+.tit { position: absolute; left: 496px; top: 121px; color: #FFFFFF; font-family: '黑体'; font-size: 48px; }
+.step { position: absolute; left: 118px; top: 180px; }
+.bang_new { position: absolute; left: 578px; top: 475px; }
+.go_home { position: absolute; left: 1121px; top: 636px; }
+/*this*/
+.tijiao { position: absolute; left: 345px; top: 574px; }
+.prev { position: absolute; left: 743px; top: 574px; }
+.bcc1 { position: absolute; left: 104px; top: 260px; }
+.bcc2 { position: absolute; left: 352px; top: 260px; }
+.bcc3 { position: absolute; left: 222px; top: 332px; width: 121px; }
+.bcc4 { position: absolute; left: 351px; top: 331px; width: 426px; }
+.bcc5 { position: absolute; left: 445px; top: 410px; }
+.errorInfo { position: absolute; left: 345px; top: 470px;  font-family: "黑体"; font-size: 40px; color:#ff0000}
+.bcc1, .bcc2, .bcc3, .bcc4, .bcc5 { color: #464646; font-family: "黑体"; font-size: 40px; }
+.bcc5 { font-size:32px; }
+.pass { width: 378px; height: 51px; line-height: 50px; font-family: "黑体"; font-size: 30px; color: #464646; border: none; background: url( ../img/text_phone_1.png ) no-repeat; }
+.debt_card_password { width: 250px; height: 51px; line-height: 50px; font-family: "黑体"; font-size: 40px; color: #ffffff; border: none; background:#044d63; }
+
+
+</style>
+</head>
+
+<body>
+<div class="main">
+	<div class="tit">解除银行卡绑定</div>
+	<div class="bcc1">借记卡卡号：</div>
+	<div class="bcc2"><span id="cardId"></span></div>
+	<div class="bcc3">密码：</div>
+	<div class="bcc4" id="DebtCardPinDIV"></div>
+    <div class="bcc5">（与您的银行卡密码一致）</div>
+	<div class="errorInfo" id="errorInfo"></div>
+	<div id="keybord"
+         style="position:absolute;display:none; width:297px; height:246px; left: 860px; top: 270px; background:url(../img/vk/dw.png) no-repeat;z-index:999">
+		<div style="z-index:998;position:absolute; left: 58px; top: 13px;"><img src="../img/vk/anquanmima.png"/></div>
+		<div id="keynum" style="position:absolute; left: 20px; top: 50px; height: 119px; width: 267px;"> </div>
+		<div style="position:absolute; left: 19px; top: 191px;"><span id="keyBackID"></span> &nbsp;<span id="keyOKID"></span></div>
+	</div>
+	<div class="tijiao">
+       <a  id="submit_button" href="javascript:return false" onClick="onSubmit()"><img  src="../img/documen.png"  onfocus="keyBoard.close()"/></a>
+	</div>
+	<div class="prev">
+        <a  href="javascript:return false" onClick="redirect.goto('./bankCardManage.jsp')"><img  src="../img/again.png"  onfocus="keyBoard.close()"/></a>
+	</div>
+	<div class="go_home">
+		<a  href="javascript:return false" onClick="redirect.goto(backURL)"><img  src="../img/back_home.png"  onfocus="keyBoard.close()"/></a>
+	</div>
+</div>
+<script type="text/javascript">
+
+var request = {
+	    getParameter : function(paras) {
+	    	  var encodeUrl = decodeURI(decodeURI(window.location.href));
+   
+        var url = encodeUrl.substr(encodeUrl.indexOf("?"));
+        
+	    	var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");   
+	    	var paraObj = {}   
+	    	for (i=0; j=paraString[i]; i++){   
+	    	paraObj[j.substring(0,j.indexOf("="))] = j.substring(j.indexOf 
+	    	("=")+1,j.length);   
+	    	}   
+	    	var returnValue = paraObj[paras];   
+	    	if(typeof(returnValue)=="undefined"){   
+	    	return "";   
+	    	}else{   
+	    	return unescape(returnValue);   
+	    	}   
+	    }
+	}
+
+
+var redirect = {
+    param : "",
+    setParameter: function(name, value) {
+        if(value==null) return;
+        this.param += this.param.length == 0 ? "?" : "&";
+        this.param += (name + "=" + escape(encodeURI(value)) );
+    },
+
+    goto : function(url) {
+       if(url.indexOf("?")<=0){
+    		window.location.href = url + (this.param);
+    	}else{
+    		//如果url带?号的话，后面的参数直接&加上参数
+    		if(this.param.length>0){
+    			window.location.href = url + (this.param).replace('?','&');
+    		}else{
+    			window.location.href = url + (this.param);
+    		}
+    	}
+    }
+}
+function getElementsFromXml(xml, tag) {
+    var startTag = "<" + tag + ">";
+    var endTag = "</" + tag + ">";
+    var startIndex = xml.indexOf(startTag);
+    var endIndex = xml.indexOf(endTag);
+    var xmlValue = xml.substring(startIndex + startTag.length, endIndex);
+    return xmlValue;
+}
+var hint = {
+
+    idFucArr:{},
+
+    addFunc:function(id,tarId){
+       this.idFucArr[id] = tarId;
+    },
+
+    clean: function(obj) {
+        document.getElementById(this.idFucArr[obj.getAttribute("id")]).innerHTML = '';
+    },
+
+    show: function(id, message) {
+        document.getElementById(id).innerHTML = message;
+    }
+}
+//pro
+var CARD_TYPE_XPATH = request.getParameter("CARD_TYPE_XPATH");
+var CARD_NO_FMTED_XPATH = request.getParameter("CARD_NO_FMTED_XPATH");
+var HOST_URL = request.getParameter("HOST_URL");
+//var IPADDR = "222.66.83.27";//PM环境TPP地址
+//var IPADDR = "222.66.83.28";//生产环境TPP地址
+var IPADDR = request.getParameter("IPADDR");
+var PORT = request.getParameter("PORT");
+var TIMEOUT = request.getParameter("TIMEOUT");
+//http://192.168.1.18:8080/tvpayUI/
+
+var ORDERNUM = "";
+var TRACENUM = "";
+var DATE="";
+
+var TERMSTATUS = request.getParameter("TERMSTATUS");
+var PUBKEYINDEX = request.getParameter("PUBKEYINDEX");
+var TERMTYPEID = request.getParameter("TERMTYPEID");
+var CHINFONAME = request.getParameter("CHINFONAME");
+var CHANNELTYPE = request.getParameter("CHANNELTYPE");
+
+
+var MERID = request.getParameter("MERID");
+var TERMID = request.getParameter("TERMID");
+var FWDBIN = request.getParameter("FWDBIN");
+var ACQBIN = request.getParameter("ACQBIN");
+var TP = request.getParameter("TP");
+
+var idno = request.getParameter("idno");
+var mobile = request.getParameter("mobile");
+var idcd= request.getParameter("idcd");
+
+//生产
+//var MERID = "898320154110177";
+//var TERMID = "54796556";
+//var FWDBIN = "49912809";
+//var ACQBIN = "00000002";
+//var TP = "5411";
+
+//天威
+//var MERID = "223440360121035";
+//var TERMID = "60301035";
+//var FWDBIN = "49910005";
+//var ACQBIN = "00000004";
+//var TP = "6012";
+
+//银视通
+//var MERID = "898320154110177";
+//var TERMID = "54796556";
+//var FWDBIN = "49910005";
+//var ACQBIN = "00000002";
+//var TP = "5411";
+
+//南京广电
+//var MERID = "898320148999021";
+//var TERMID = "54797050";
+//var FWDBIN = "49910005";
+//var ACQBIN = "00000005";
+//var TP = "4899";
+
+var MERNAME = request.getParameter("MERNAME");
+
+var MERID4MOBILE = request.getParameter("MERID4MOBILE");
+var TERMID4MOBILE = request.getParameter("TERMID4MOBILE");
+var ACQBIN4MOBILE = request.getParameter("ACQBIN4MOBILE");
+
+//trans
+var TVPayTransManager = {
+    init: function(id,objectName){
+        document.getElementById(id).innerHTML = "<embed id=\""+objectName+"\" type=\"application/x-ctvpayplugin\" width='0' height='0'></embed>";
+    }
+}
+
+/**
+* 取消卡绑定
+*/
+function cardCancel(termUnitNo, userID, cardId, cardType, cardPassword,cardExpireDate,cardCVN2,tranCheckMode,secRelContInfo,entryCode,idno,mobile,idcd){
+
+	var msgstr =  "<?xml version='1.0' encoding='UTF-8' ?><TVPay><SecureData>0</SecureData><Mac></Mac><TVPaybody><TermStatus>0</TermStatus><ProCode></ProCode><Msg><version>1000</version><typeID>0100</typeID></Msg><ProcessingCode>940000</ProcessingCode><EntryCode>"+entryCode+"</EntryCode><PosCondCode>00</PosCondCode><xclass>TC</xclass><acctNum>"+cardId+"</acctNum><cardType>"+cardType+"</cardType><safetyVerifyMode>1</safetyVerifyMode><Merchant><acqBIN>"+ACQBIN+"</acqBIN><fwdBIN>"+FWDBIN+"</fwdBIN><termUnitNo>"+termUnitNo+"</termUnitNo><userID>"+userID+"</userID><termTypeID>"+TERMTYPEID+"</termTypeID><merID>"+MERID+"</merID><name>"+MERNAME+"</name></Merchant><Purchase><termID>"+TERMID+"</termID><termAcAbility>0</termAcAbility><icCondCode>0</icCondCode><traceNum>"+TRACENUM+"</traceNum><date>"+DATE+"</date><currency>156</currency></Purchase><channelType>"+CHANNELTYPE+"</channelType><ChInfo><certType></certType><number></number><name>"+CHINFONAME+"</name></ChInfo><CntInfo><mobile>"+mobile+"</mobile><telephone></telephone><email></email><address></address><postcode></postcode></CntInfo><SecRelContInfo>"+secRelContInfo+"</SecRelContInfo><PubKeyIndex>"+PUBKEYINDEX+"</PubKeyIndex><Extension>0</Extension><tranCheckMode>"+tranCheckMode+"</tranCheckMode></TVPaybody></TVPay>";	
+
+
+	var outAccount = cardId;
+	var inAccount = "0";
+	var transPasswd = cardPassword;
+	var expiryDate = cardExpireDate;
+	var dynamicPasswd = "";
+	var random = "0";
+	var cvn2 = cardCVN2;
+	
+
+var answer=tvPay(IPADDR,PORT,TIMEOUT,0,outAccount.toString(),inAccount.toString(),cardPassword.toString(),expiryDate.toString(),dynamicPasswd,random.toString(),cvn2.toString(),msgstr,null);
+return answer;
+
+
+}
+
+
+function pay(tppAddress, tppPort, termUnitNo, userId, pubKeyIndex, termStatus, traceNum, merID, merName, date, acqBIN, fwdBIN, tp, termID, timeout, cardNo, orderNum, orderInfo,cardType, cardPassword,cardExpireDate,cardCVN2,tranCheckMode,secRelContInfo,entryCode,mobileNo,purchAmount,safetyVerifyMode,certType,certiCode){
+
+	var msgstr = "<?xml version='1.0' encoding='UTF-8'?><TVPay><TVPaybody><Msg><version>1000</version><typeID>0200</typeID></Msg><TermStatus>"+termStatus+"</TermStatus><ProcessingCode>000000</ProcessingCode><xtype>19</xtype><EntryCode>"+entryCode+"</EntryCode><xclass>XF</xclass><PosCondCode>81</PosCondCode><orderNum>"+orderNum+"</orderNum><acctNum>"+cardNo+"</acctNum><cardType>"+cardType+"</cardType><safetyVerifyMode>"+safetyVerifyMode+"</safetyVerifyMode><Merchant><termUnitNo>"+termUnitNo+"</termUnitNo><termTypeID>"+TERMTYPEID+"</termTypeID><acqBIN>"+acqBIN+"</acqBIN><fwdBIN>"+fwdBIN+"</fwdBIN><userID>"+userId+"</userID><merID>"+merID+"</merID><name>"+merName+"</name><tp>"+tp+"</tp><OrderInfo>"+orderInfo+"</OrderInfo></Merchant><Purchase><icCondCode>0</icCondCode><termAcAbility>0</termAcAbility><termID>"+termID+"</termID><traceNum>"+traceNum+"</traceNum><date>"+date+"</date><purchAmount>"+purchAmount+"</purchAmount><currency>156</currency></Purchase><ChInfo><certType>"+certType+"</certType><number>"+certiCode+"</number></ChInfo><CntInfo><mobile>"+mobileNo+"</mobile></CntInfo><channelType>"+CHANNELTYPE+"</channelType><PubKeyIndex>"+pubKeyIndex+"</PubKeyIndex><tranCheckMode>"+tranCheckMode+"</tranCheckMode><SecRelContInfo>"+secRelContInfo+"</SecRelContInfo></TVPaybody><SecureData></SecureData><Mac></Mac></TVPay>";
+	
+	var outAccount = cardNo;
+	var inAccount = "";
+	var random = "0";
+	var dynamicPasswd = "";
+
+var answer=tvPay(tppAddress,tppPort,timeout,0,outAccount.toString(),inAccount.toString(),cardPassword.toString(),cardExpireDate.toString(),dynamicPasswd,random.toString(),cardCVN2.toString(),msgstr,null);
+	//var ret=new Array(2);
+//	ret[0]=answer.response_code;
+//	ret[1]=answer.trans_out_xml;
+//return ret;
+return answer;
+} 
+/* 
+function  tvPay(IPADDR,PORT,TIMEOUT,TVP_TRANSINFO,outAccount,inAccount,cardPassword,expiryDate,dynamicPasswd,randomString,cvn2,msgstr,embedObj){
+	
+		//调用我中兴的支付控件
+		var answerJSON = DTVBank.transact(IPADDR,PORT,TIMEOUT,outAccount.toString(),inAccount.toString(),cardPassword.toString(),			expiryDate.toString(),dynamicPasswd.toString(),randomString.toString(),cvn2.toString(),msgstr);
+		var answer = eval("("+answerJSON+")");
+		var ret=new Array(2);
+		ret[0]=answer.response_code;
+		ret[1]=answer.trans_out_xml;
+		return ret;
+}
+
+ */
+ 
+/*  */
+function  tvPay(IPADDR,PORT,TIMEOUT,TVP_TRANSINFO,outAccount,inAccount,cardPassword,expiryDate,dynamicPasswd,randomString,cvn2,msgstr,embedObj){
+		 var embedObj=document.getElementById("embedObj");
+		 
+		 PORT=Number(PORT);
+		 TIMEOUT=Number(TIMEOUT);
+		//调用我们自己的支付控件
+		var returnString = embedObj.LandiProcessControl(IPADDR,PORT,TIMEOUT,0,outAccount.toString(),inAccount.toString(),cardPassword.toString(),expiryDate.toString(),dynamicPasswd.toString(),randomString.toString(),cvn2.toString(),msgstr,"99");
+		var ret=returnString.split('\r\n');
+		
+		//兼容emu环境
+		if(ret.length==4){
+			ret[1]=ret[1]+ret[2];
+		}
+		
+		return ret;
+}
+
+//key
+function KeyBoard(id, keyId,backId,okId,closeFouceId) {
+    this.keyBoardObject = document.getElementById(id);
+    this.keyIdObject = document.getElementById(keyId);
+    this.keyBackObject = document.getElementById(backId);
+    this.keyOKObject = document.getElementById(okId);
+    this.pin = new Array(6);
+    this.imgPath = "../img/vk/";
+    this.closeFouceId = closeFouceId;
+}
+
+KeyBoard.prototype.open = function(p) {
+    this.keyBoardObject.style.display = 'block';
+    this.initKeyBoard();
+    this.pinObject = p;
+}
+
+KeyBoard.prototype.close = function(move) {
+    if(move) this.focusMove();
+    this.keyBoardObject.style.display = 'none';    
+}
+
+KeyBoard.prototype.initKeyBoard = function() {
+    var str = "<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">";
+    str += "<tr>";
+    KeyBoardUI.imgPath = this.imgPath;
+    KeyBoardUI.init("keyBoard");
+    var keyArray = KeyBoardUI.UI_KEY_ARRAY;
+    for (var i = 0; i < keyArray.length; i++) {
+        str += "<td width=\"52\" height=\"72\">";
+        str+=keyArray[i];
+        str+="</td>";
+        if (i == 4) str += "</tr><tr>";
+    }
+    str += "</tr></table>";
+    this.keyIdObject.innerHTML = str;
+    document.getElementById('KeyBoardKey_0').focus();
+    this.keyBackObject.innerHTML = KeyBoardUI.UI_BACK;
+    this.keyOKObject.innerHTML = KeyBoardUI.UI_OK;
+}
+
+KeyBoard.prototype.addPin = function(num) {
+    for (var i = 0; i < this.pin.length; i++) {
+        if (this.pin[i] == null) {
+            this.pin[i] = num;
+            break;
+        }
+    }
+    this.push();
+}
+
+KeyBoard.prototype.push = function() {
+    this.pinObject.value = "";
+    for (var i = 0; i < this.pin.length; i++) {
+        if (this.pin[i] != null) {
+            this.pinObject.value += '*';
+        }
+    }
+}
+
+KeyBoard.prototype.getPin = function(){
+   var s = "";
+    for(var i=0;i<this.pin.length;i++){
+        if(this.pin[i]!=null){
+            s+=this.pin[i];
+        }
+    }
+    return s;
+}
+
+KeyBoard.prototype.backPin = function() {
+    for (var i = this.pin.length - 1; i >= 0; i--) {
+        if (this.pin[i] != null) {
+            this.pin[i] = null;
+            break;
+        }
+    }
+    this.push();
+}
+
+KeyBoard.prototype.focusMove = function(){
+    if(this.closeFouceId!=null){
+       var obj = document.getElementById(this.closeFouceId);
+    if(obj!=null) obj.focus();
+    }
+}
+
+//ui
+var UI = {
+    type:0,//0 test; 1 tv
+    UI_CERT:null,
+    UI_MOBILE:null,
+    UI_DEBT_CARD_ID:null,      //借记卡卡号UI
+    UI_DEBT_CARD_PIN:null,     //借记卡密码UI
+    UI_SMS_CODE:null,          //手机动态码UI
+    UI_CREDIT_CARD_ID:null,    //信用卡卡号UI
+    UI_CREDIT_CARD_CVN2:null,  //信用卡ＣＶＮ２UI
+    UI_CREDIT_CARD_YEAR:null,  // 信用卡有效期（年份）UI
+    UI_CREDIT_CARD_MONTH:null, //信用卡有效期（月份） UI
+
+
+    init : function(keyBoardName) {
+        if (this.type == 1) {
+            var msgstr = "<Req><ReqType>0002</ReqType><Length>18|11|22|6|8|22|3|2|2</Length><ActionName>" + keyBoardName + "</ActionName></Req>";
+            var answer = tvPay("999.999.999.999", 9999, 1000, "", "", "", "", "", "", "", msgstr, null);
+            this.UI_CERT = getElementsFromXml(answer[1], "Cert");
+            this.UI_MOBILE = getElementsFromXml(answer[1], "Mobile");
+            this.UI_DEBT_CARD_ID = getElementsFromXml(answer[1], "DebtCard");
+            this.UI_DEBT_CARD_PIN = getElementsFromXml(answer[1], "DebtPin");
+            this.UI_SMS_CODE = getElementsFromXml(answer[1], "SmsCode");
+            this.UI_CREDIT_CARD_ID = getElementsFromXml(answer[1], "CreditCard");
+            this.UI_CREDIT_CARD_CVN2 = getElementsFromXml(answer[1], "CVN2");
+            this.UI_CREDIT_CARD_YEAR = getElementsFromXml(answer[1], "Year");
+            this.UI_CREDIT_CARD_MONTH = getElementsFromXml(answer[1], "Month");
+            //"<Res><ReqType>0002</ReqType><Cert></Cert><Mobile></Mobile><DebtCard></DebtCard><DebtPin></DebtPin><SmsCode></SmsCode><CreditCard></CreditCard><CVN2></CVN2><Year></Year><Month></Month></Res>";
+        } else if (this.type == 0) {
+            var length = "18|11|22|6|8|22|3|2|2".split("|", -1);
+            this.UI_CERT = "<input class=\"cert_input\" type=\"text\" id=\"certNo\" maxlength=\"" + length[0] + "\" onfocus=\"hint.clean(this)\"/>"
+            this.UI_MOBILE = "<input class=\"mobile_input\" type=\"text\" id=\"mobile\" maxlength=\"" + length[1] + "\" onfocus=\"hint.clean(this)\"/>"
+            this.UI_DEBT_CARD_ID = "<input class=\"debt_card_num\" type=\"text\" id=\"debt_cardId\" maxlength=\"" + length[2] + "\" onfocus=\"" + keyBoardName + ".close()\"/>"
+            this.UI_DEBT_CARD_PIN = "<input class=\"debt_card_password\" type=\"password\" id=\"debt_pin\" maxlength=\"" + length[3] + "\" onfocus=\"" + keyBoardName + ".open(this)\"  />"
+            this.UI_SMS_CODE = "<input class=\"mobile_code\" type=\"text\" id=\"verifyCode\" maxlength=\"" + length[4] + "\" onfocus=\"" + keyBoardName + ".close()\" disabled=\"true\" />"
+            this.UI_CREDIT_CARD_ID = "<input class=\"credit_card_num\" type=\"text\" id=\"credit_cardId\" maxlength=\"" + length[5] + "\" onfocus=\"" + keyBoardName + ".close()\"/>"
+            this.UI_CREDIT_CARD_CVN2 = "<input class=\"cvn2_num\" type=\"text\" id=\"credit_cvn2\" maxlength=\"" + length[6] + "\" onfocus=\"" + keyBoardName + ".close()\"/>"
+            this.UI_CREDIT_CARD_YEAR = "<input class=\"year\" type=\"text\" id=\"credit_year\" maxlength=\"" + length[7] + "\" onfocus=\"" + keyBoardName + ".close()\"/>"
+            this.UI_CREDIT_CARD_MONTH = "<input class=\"month\" type=\"text\" id=\"credit_month\" maxlength=\"" + length[8] + "\" onfocus=\"" + keyBoardName + ".close()\"/>";
+        }
+    }
+}
+
+var KeyBoardUI = {
+    type:0,
+    UI_KEY_ARRAY:new Array(10),
+    UI_BACK:null,
+    UI_OK:null,
+    imgPath:null,
+    init : function(keyBoardName) {
+        if (this.type == 1) {
+            var msgstr = "<Req><ReqType>0001</ReqType><Path>" + this.imgPath + "</Path><ActionName>" + keyBoardName + "</ActionName></Req>";
+            //            var resStr = "<Req><ReqType>0001</ReqType><KeyBack></KeyBack><KeyOk></KeyOk><KeyValue><Key0></Key0><Key1></Key1><Key2></Key2><Key3></Key3><Key4></Key4><Key5></Key5><Key6></Key6><Key7></Key7><Key8></Key8><Key9></Key9></KeyValue></Req>"
+
+            var answer = tvPay("999.999.999.999", 9999, 1000, "", "", "", "", "", "", "", msgstr, null);
+            this.UI_BACK = getElementsFromXml(answer[1], "KeyBack");
+            this.UI_OK = getElementsFromXml(answer[1], "KeyOk");
+            for (var i = 0; i < 10; i++) {
+                this.UI_KEY_ARRAY[i] = getElementsFromXml(answer[1], "Key" + i);
+            }
+        } else if (this.type == 0) {
+ 						 this.UI_BACK = " <a id=\"KeyBoard_Back\" href=\"javascript:return false\" onclick=\"" + keyBoardName + ".backPin()\"><img  src=\"" + this.imgPath + "houtui.png\" /></a> ";
+            
+             this.UI_OK = " <a  id=\"KeyBoard_OK\" href=\"javascript:return false\" onclick=\"" + keyBoardName + ".close(true)\" > <img  src=\"" + this.imgPath + "queren.png\" /> </a> ";
+                       
+
+            var charr = this.getRandomArray();
+            for (var i = 0; i < charr.length; i++) {
+               this.UI_KEY_ARRAY[i] = "<a id=\"KeyBoardKey_" + i + "\"  href=\"javascript:return false\"  ><img  src=\"" + this.imgPath + charr[i] + ".png\" onclick=\"" + keyBoardName + ".addPin(" + charr[i] + ")\" /></a>";
+            }
+        }
+    },
+
+    getRandomArray : function() {
+        var arr = new Array();
+        while (arr.length < 10) {
+            var num = Math.floor(Math.random() * 10);
+            if (arr.toString().indexOf(num + "") == -1) {
+                arr.push(num);
+            }
+        }
+        return arr;
+    }
+}
+
+
+
+
+
+
+    redirect.setParameter("userId", request.getParameter("userId"));
+    redirect.setParameter("termUnitNo", request.getParameter("termUnitNo"));
+    var userId = request.getParameter("userId");
+    var termUnitNo = request.getParameter("termUnitNo");
+    var cardId = request.getParameter("cardId");
+    var cardType = request.getParameter("cardType");
+    ORDERNUM = request.getParameter("orderNum");
+	DATE = request.getParameter("date");
+	TRACENUM = request.getParameter("traceNum");
+    document.getElementById("cardId").innerHTML = cardId;
+
+    UI.init("keyBoard");
+    hint.show('DebtCardPinDIV', UI.UI_DEBT_CARD_PIN);
+
+    var keyBoard = new KeyBoard("keybord", "keynum", "keyBackID", "keyOKID", 'submit_button');
+    document.getElementById('debt_pin').focus();
+    keyBoard.open(document.getElementById('debt_pin'));
+</script> 
+<script type="text/javascript">
+    //这个函数在common.JS
+    function onSubmit() {
+        var certType = "01";
+        var cardCVN2 = "";
+        var tranCheckMode = "";
+        var secRelContInfo = "1000000000000000";
+        var entryCode = "";
+         if(idcd==null||idcd.trim()=="")
+        	 idcd="01";
+        if ("0" == cardType) {
+            entryCode = "011";
+            var cardPassword =  keyBoard.getPin();
+          //添加密码验证
+            if(checkTableInput.chkPwd(cardPassword)){
+            	// alert(checkTableInput.chkPwd(cardPassword));
+                document.getElementById("errorInfo").innerHTML = checkTableInput.chkPwd(cardPassword);
+            	return;
+            }
+
+            tranCheckMode = "1000000000000000";
+
+            var answer = cardCancel(termUnitNo, userId, cardId, cardType, cardPassword, "", "", tranCheckMode, secRelContInfo, entryCode,idno,mobile,idcd);
+            var msg = answer[0];
+
+            redirect.setParameter("cardId", cardId);
+            if (msg == "00") {
+                redirect.goto('./bankCardCancelBindSucess.html');
+            } else {
+                redirect.setParameter("msg", msg);
+                redirect.goto('./bankCardCancelBindfail.html');
+            }
+        } else if ("1" == cardType) {
+            cardCVN2 = document.getElementById("inputCvn2").value;
+            entryCode = "012";
+            tranCheckMode = "0100010010000000";
+
+            var cardExpireDate = "" + document.getElementById("inputyear").value + document.getElementById("inputmonth").value;
+
+            var cardPassword = "";
+
+            var answer = cardCancel(termUnitNo, userId, cardId, cardType, cardPassword, cardExpireDate, cardCVN2, tranCheckMode, secRelContInfo, entryCode,idno,mobile,idcd);
+            var msg = answer[0];
+            redirect.setParameter("cardId", cardId);
+            if (msg == "00") {
+                redirect.goto('./bankCardCancelBindSucess.html');
+            } else {
+                redirect.setParameter("msg", msg);
+                redirect.goto('./bankCardCancelBindfail.html');
+            }
+        }
+    }
+</script> 
+<script>
+//为中兴机顶盒 input type = text 的添加focus效果
+var allInputNeedAddBorder = document.getElementsByTagName("input");
+for( var i=0; i<allInputNeedAddBorder.length; i++ ){
+	if(allInputNeedAddBorder[i].type == 'text'){
+		allInputNeedAddBorder[i].onfocus = function(){
+			/*this.style.background = '#f90;*/
+			this.style.border = '2px solid #f90';
+		}
+		allInputNeedAddBorder[i].onblur = function(){
+			/*this.style.background = '#044d63';*/
+			this.style.border = 'none';
+		}
+	}
+}
+
+//页面返回用的的URL
+var backURL = request.getParameter("backURL"); 
+if(!backURL){
+	//redirect.setParameter("userId", termUnitNo);
+	//redirect.setParameter("termUnitNo", termUnitNo);
+	backURL = "../index.html";
+}
+</script>
+<script type="text/javascript">
+var checkTableInput = {
+	msgId :["请输入身份证号码","身份证位数错误","身份证输入错误"], //身份证
+	msgCvn2 :["请输入CVN2号码","CVN2位数错误","CVN2输入错误"], //信用卡CVN2
+	msgMonth :["请输入有效期月份","有效期月份错误","有效期月份不是数字"], //信用卡月份
+	msgYear :["请输入有效期年份","有效期年份错误","有效期年份不是数字"], //信用卡年份
+	msgDebtcardNum :["请输入借记卡卡号","借记卡卡号错误","卡号包含错误字符"], //信用卡卡号
+	msgCreditcardNum :["请输入信用卡卡号","信用卡卡号错误","卡号包含错误字符"], //信用卡卡号
+	msgMobile :["请输入手机号码","手机号码位数错误","手机号码输入错误"], //手机号错误信息
+	msgPwd :["请输入密码","密码位数错误","密码输入错误"], //密码错误信息
+	msgDynamicPwd :["请输入动态密码","动态密码位数错误","动态密码输入错误"],//动态密码
+	msgAmount :["请输入金额","金额错误"],//动态密码
+
+
+	//验证身份证号
+	chkIdNum : function(idNum){
+		if (idNum == "" || idNum == null || idNum == "null" || idNum.length == 0) {
+			return this.msgId[0]
+		} else if (idNum.length!=15 && idNum.length!=18 ) {
+			return this.msgId[1]
+		} else if (isNaN(idNum.slice(0,-1)) ) {
+			return this.msgId[2]
+		} else {
+			return false
+		};
+	},
+
+	//验证CVN2
+	chkCvnNum : function(cvnNum){
+		if (cvnNum == "" || cvnNum == null || cvnNum == "null" || cvnNum.length == 0) {
+			return this.msgCvn2[0]
+		} else if (cvnNum.length!=3 ) {
+			return this.msgCvn2[1]
+		}else if(isNaN(cvnNum)){
+			return this.msgCvn2[2]
+		} else {
+			return false
+		};
+	},
+
+	//验证信用卡月份
+	chkMonth : function(month){
+		if (month == "" || month == null || month == "null" || month.length == 0) {
+			return this.msgMonth[0]
+		} else if (month.length>2) {
+			return this.msgMonth[1]
+		} else if (month>12||month<=0) {
+			return this.msgMonth[1]
+		} else if (isNaN(month)){
+			return this.msgMonth[2]
+		} else {
+			return false
+		};
+	},
+
+	//验证信用卡年份
+	chkYear : function(year){
+		if (year == "" || year == null || year == "null" || year.length == 0) {
+			return this.msgYear[0]
+		} else if (year.length!=2 ) {
+			return this.msgYear[1]
+		} else if (year>99||year<12) {
+			return this.msgYear[1]
+		} else if (isNaN(year)) {
+			return this.msgYear[2]
+		} else {
+			return false
+		};
+	},
+
+	//验证借记卡卡号
+	chkDebtcardNum : function(debtcardNum){
+		if (debtcardNum == "" || debtcardNum == null || debtcardNum == "null" || debtcardNum.length == 0) {
+			return this.msgDebtcardNum[0]
+		} else if (debtcardNum.length>19 || debtcardNum.length<16) {
+			return this.msgDebtcardNum[1]
+		} else if (isNaN(debtcardNum)) {
+			return this.msgDebtcardNum[2]
+		} else {
+			return false
+		};
+	},
+
+	//验证信用卡卡号
+	chkCreditcardNum : function(creditcardNum){
+		if (creditcardNum == "" || creditcardNum == null || creditcardNum == "null" || creditcardNum.length == 0) {
+			return this.msgCreditcardNum[0]
+		} else if (creditcardNum.length!=16 ) {
+			return this.msgCreditcardNum[1]
+		} else if (isNaN(creditcardNum)) {
+			return this.msgCreditcardNum[2]
+		} else {
+			return false
+		};
+	},
+
+	//判断手机号码
+	chkMobile : function(mobile){
+		if (mobile == "" || mobile == null || mobile == "null" || mobile.length == 0) {
+			return this.msgMobile[0]
+		} else if (mobile.length!=11) {
+			return this.msgMobile[1]
+		} else if (mobile.indexOf("0")==0||isNaN(mobile)) {//判断是否0开头和是否是数字
+			return this.msgMobile[2]
+		} else {
+			return false
+		};
+	},
+
+	//判断密码
+		chkPwd : function(pwd){
+		if (pwd == "" || pwd == null || pwd == "null" || pwd.length == 0) {
+			return this.msgPwd[0]
+		} else if (pwd.length!=6) {
+			return this.msgPwd[1]
+		} else if (isNaN(pwd)) {//判断是否0开头和是否是数字
+			return this.msgPwd[2]
+		} else {
+			return false
+		};
+	},
+
+	//判断动态码
+		chkDynamicPwd : function(dynamicPwd){
+		if (dynamicPwd == "" || dynamicPwd == null || dynamicPwd == "null" || dynamicPwd.length == 0) {
+			return this.msgDynamicPwd[0]
+		} else if (dynamicPwd.length!=6) {
+			return this.msgDynamicPwd[1]
+		} else if (isNaN(dynamicPwd)) {//判断是否是数字
+			return this.msgDynamicPwd[2]
+		} else {
+			return false
+		};
+	},
+
+	//判断金额
+		chkAmount : function(amount){
+		if (amount == "" || amount == null || amount == "null" || amount.length == 0) {
+			return this.msgAmount[0]
+		} else if (isNaN(amount)) {//判断是否是数字
+			return this.msgAmount[1]
+		} else {
+			return false
+		};
+	}
+
+
+
+}
+</script>
+</body>
+<div id='embedObjDiv'></div>
+<script type="text/javascript">
+    TVPayTransManager.init('embedObjDiv', 'embedObj');
+</script>
+</html>

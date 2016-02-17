@@ -1,0 +1,54 @@
+此service提供关于TV方面的操作，和MT55一样，通过AIDL来调用其中的方法。
+
+interface ITVService { 
+	void enterTV();
+	void leaveTV();
+	void onExit3DMode();
+	void onNLSwitchOff();
+	void setScreenPosition(String output, float x, float y, float width, float height);
+	void showSanDUI(boolean bShowSanDUI);
+	void setFocusTV(boolean bFocusTV);
+	void appKeyguard(boolean bAppKeyguard);
+	void setInfoWindows(boolean bInfoWindows);
+	boolean isShowSanDUI();
+	boolean isSourceTV();
+	boolean isSourceATV();
+	boolean isSourceDTV();
+	boolean isSourceAV();
+	boolean isSourceHDMI();
+	boolean isSourceVGA();
+	boolean isSourceYPBPR();
+	boolean isNotSupportVGA();
+	void refreshUIBkLight();
+	void onStartOfSanDUI();
+	void onResumeOfSanDUI();
+	void onPauseOfSanDUI();
+	void onStopOfSanDUI();
+	void onNLSwitchOn();
+	void setFbmModeTVMM();
+	void setFbmModeAndroid();
+	void refreshDTVBkLight();
+	String getCurInputSouce();
+	int getChannelLength();
+	int getCurrentChannelCount();
+	int getPicBrigthness();
+	int getPicContrast();
+	int getPicChroma();
+	int getPicSharpness();
+	void setPicBrigthness(int value);
+	void setPicContrast(int value);
+	void setPicChroma(int value);
+	void setPicSharpness(int value);
+	void powerOff();
+	boolean is3DMode();
+	void setMicphoneStatus(int status);
+	void setKaraOKMicphoneVolume(int volume); 
+	void setKaraOKBackgroundVolume(int volume);
+	List<ChannelList> getChannelList(String inSrc); 
+	List<ChannelList> getDTVChannellist();
+	List<ChannelList> getATVChannellist();
+	int getDtvProgrameCount();
+	boolean isFocusTV();
+	void playDTVProgrameByNumber(int channelNumber);
+	int getDTVChannelLength();
+}

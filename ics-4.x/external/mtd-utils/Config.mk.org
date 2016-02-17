@@ -1,0 +1,38 @@
+# $(1): src directory
+# $(2): output file
+# $(2): label (if any)
+# $(4): if true, add journal
+#
+# $(1): root directory
+# $(2): system directory
+# $(2): output file
+#MKUBIFS_ROOTFS_FLAGS=-m 2048 -e 126976 -c 120
+MKUBIFS_SYSTEM_FLAGS=-m 2048 -e 126976 -c 701
+UBINIZE_FLAGS=-m 2048 -p 128KiB -s 2048
+
+#define build-rootfsimage-ubifs-target
+#	@echo "Making ubifs rootfs image"
+#	@ mkdir -p $(dir $(2))
+#	@ mkdir -p $(dir $(2))/ubi_rootfs
+#        @ $(ACP) -d -p -r $(TARGET_ROOT_OUT)/* $(dir $(2))/ubi_rootfs/
+#	@ $(ACP) external/mtd-utils/rootfs.cfg $(dir $(2))
+#	@ $(ACP) -p $(UBINIZE) $(dir $(2))
+#	@ $(MKUBIFS) --devtable device/mtk/mt5395/configs/root_dev.txt -r $(dir $(2))/ubi_rootfs/ -o $(dir $(2))/ubifs.rootfs.img $(MKUBIFS_ROOTFS_FLAGS)
+#	@cd $(dir $(2)); ./ubinize -o `basename $(2)` $(UBINIZE_FLAGS) rootfs.cfg
+#        @rm -rf $(dir $(2))/ubi_rootfs $(dir $(2))/ubifs.rootfs.img $(dir $(2))/ubinize $(dir $(2))/rootfs.cfg
+#endef
+
+define build-systemimage-ubifs-target
+	echo "Making ubifs system image"
+	 mkdir -p $(dir $(2))
+	 mkdir -p $(dir $(2))/ubi_root
+	 $(ACP) -d -p -r $(TARGET_OUT) $(dir $(2))/ubi_root/
+	 $(ACP) external/mtd-utils/system.cfg $(dir $(2))
+	 $(ACP) -p $(UBINIZE) $(dir $(2))
+	 $(MKUBIFS) -r $(dir $(2))/ubi_root/system/ -o $(dir $(2))/ubifs.system.img $(MKUBIFS_SYSTEM_FLAGS)
+	cd $(dir $(2)); ./ubinize -o `basename $(2)` $(UBINIZE_FLAGS) system.cfg
+        rm -rf $(dir $(2))/ubi_root $(dir $(2))/ubifs.system.img $(dir $(2))/ubinize $(dir $(2))/system.cfg
+endef
+
+
+

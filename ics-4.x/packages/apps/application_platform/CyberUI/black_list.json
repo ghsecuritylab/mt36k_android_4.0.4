@@ -1,0 +1,80 @@
+{
+	"error_code" : 1000,
+	"black_list" : [{
+			"package_name" : "com.tcl.cyberui",
+			"activity_name" : "com.tcl.cyberui.MainActivity"
+		}, {
+			"package_name" : "com.tcl.browser",
+			"activity_name" : "com.tcl.browser.SiteMapActivity"
+		}, {
+			"package_name" : "com.tcl.matrix.tventrance",
+			"activity_name" : "com.tcl.matrix.tventrance.navigator.NavigatorActivity"
+		}, {
+			"package_name" : "com.tcl.d3help",
+			"activity_name" : "com.tcl.d3help.D3HelpActivity"
+		}, {
+			"package_name" : "com.adobe.flashplayer",
+			"activity_name" : "com.adobe.flashplayer.SettingsManager"
+		}, {
+			"package_name" : "com.android.development",
+			"activity_name" : "com.android.development.Development"
+		}, {
+			"package_name" : "com.android.speechrecorder",
+			"activity_name" : "com.android.speechrecorder.SpeechRecorderActivity"
+		}, {
+			"package_name" : "com.tcl.android.TVwidget",
+			"activity_name" : "com.tcl.android.TVwidget.TVwidgetActivity"
+		}, {
+			"package_name" : "com.tcl.mtk.mtkVersionUpdate",
+			"activity_name" : "com.tcl.mtk.mtkVersionUpdate.UI.SystemUpdateActivity"
+		}, {
+			"package_name" : "com.tcl.mstar.video3dmenu",
+			"activity_name" : "com.tcl.mstar.video3dmenu.Video3DMenu"
+		}, {
+			"package_name" : "com.tcl.android.TclDtvWidget",
+			"activity_name" : "com.tcl.android.TclDtvWidget.TclDtvWidgetActivity"
+		}, {
+			"package_name" : "com.tcl.voicemanager",
+			"activity_name" : "com.tcl.voicemanager.VoiceManagerActivity"
+		}, {
+			"package_name" : "com.android.inputmethod.pinyin",
+			"activity_name" : "com.android.inputmethod.pinyin.SettingsActivity"
+		}, {
+			"package_name" : "com.tcl.android.SystemDemo",
+			"activity_name" : "com.tcl.android.SystemDemo.SystemDemoActivity"
+		}, {
+			"package_name" : "com.tcl.tv",
+			"activity_name" : "com.tcl.tv.TVActivity"
+		}, {
+			"package_name" : "com.tcl.infopush",
+			"activity_name" : "com.tcl.infopush.ui.TestInfoPush"
+		}, {
+			"package_name" : "com.tcl.showmessage",
+			"activity_name" : "com.tcl.showmessage.ShowMessage"
+		}, {
+			"package_name" : "com.tcl.adservice",
+			"activity_name" : "com.tcl.adservice.MainActivity"
+		}, {
+			"package_name" : "com.iflytek.xiri",
+			"activity_name" : "com.iflytek.xiri.StartActivity"
+		}, {
+			"package_name" : "com.qiyi.video",
+			"activity_name" : "com.qiyi.video.ui.home.HomeActivity"
+		}, {
+			"package_name" : "com.android.providers.downloads.ui",
+			"activity_name" : "com.android.providers.downloads.ui.DownloadList"
+		}, {
+			"package_name" : "com.tcl.common.guide",
+			"activity_name" : "com.tcl.common.guide.NetworkConnectGuide"
+		},{
+			"package_name" : "com.skyworth.vipclub",
+			"activity_name" : "com.utv360.tv.mall.activity.WelcomeActivity"
+		},{
+			"package_name" : "com.tcl.vod",
+			"activity_name" : "com.tcl.vod.MainActivity"
+		}
+		
+		
+
+	]
+}

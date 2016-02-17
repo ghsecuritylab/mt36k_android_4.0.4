@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configInfo>
+	<payChannel>0</payChannel>
+	<tppAddress>110.173.3.118</tppAddress>
+	<tppPort>9801</tppPort>
+	<contentAddress>192.168.17.100</contentAddress>
+	<contentPort>8080</contentPort>
+	<tradeRecords>http://tvpay.huan.tv:8080/android/orderQuery.do</tradeRecords>
+	<cardList>http://tvpay.huan.tv:8080/android/qryCardList.do</cardList>
+	<traceInfo>http://tvpay.huan.tv:8080/android/getTraceNum.do</traceInfo>
+	<ccRecordInfo>http://tvpay.huan.tv:8080/android/ccRecordQuery.do</ccRecordInfo>
+	<billLatestQuery>http://tvpay.huan.tv:8080/android/billLatestQuery.do</billLatestQuery>
+	<billLatestAdd>http://tvpay.huan.tv:8080/android/billLatestAdd.do</billLatestAdd>
+	<billAreaQuery>http://tvpay.huan.tv:8080/android/billAreaQuery.do</billAreaQuery>
+	<cardBinURL>http://tvpay.huan.tv:8080/android/ccBinCheck.do</cardBinURL>
+	<cardBinDateURL>http://tvpay.huan.tv:8080/android/ccBinDate.do</cardBinDateURL>
+	<cardUsedURL>http://tvpay.huan.tv:8080/android/ccRecordAdd.do</cardUsedURL>
+	<billInstQuery>http://tvpay.huan.tv:8080/android/billInstQuery.do</billInstQuery>
+	<mobileNoQry>http://tvpay.huan.tv:8080/android/mobileNoQry.do</mobileNoQry>
+	<mobileDiscQry>http://tvpay.huan.tv:8080/android/mobileDiscQry.do</mobileDiscQry>
+	<mobileNoAdd>http://tvpay.huan.tv:8080/android/mobileNoAdd.do</mobileNoAdd>
+  <ccpBinVerify>http://tvpay.huan.tv:8080/android/ccpBinVerify.do</ccpBinVerify>
+
+</configInfo>

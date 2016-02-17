@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	android:versionCode="1" android:versionName="1.0" package="com.mediatek.tv.service">
+	<uses-sdk android:minSdkVersion="15" />
+
+	<application android:icon="@drawable/icon" android:label="@string/app_name">
+		<service android:name="com.mediatek.tv.service.TVRemoteService" android:label="TVRemoteService">
+			<intent-filter>
+				<action android:name="com.mediatek.tv.service.TVRemoteService" />
+			</intent-filter>
+		</service>
+	</application>
+</manifest>

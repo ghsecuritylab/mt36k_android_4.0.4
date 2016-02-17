@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="18dp" android:paddingRight="90dp"
+    >
+    
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/gesture_check_face" android:layout_width="wrap_content"
+	android:layout_height="wrap_content" android:src="@drawable/recognition_face">
+</ImageView>
+
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/gesture_check_image" android:layout_width="wrap_content"
+	android:layout_height="wrap_content" android:src="@drawable/recognition_normal">
+</ImageView>
+
+
+
+</LinearLayout>

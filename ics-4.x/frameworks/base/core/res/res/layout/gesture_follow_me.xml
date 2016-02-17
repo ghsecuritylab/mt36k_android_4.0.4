@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent" android:layout_height="fill_parent"
+  android:id="@+id/follow_me" android:gravity="center_vertical|center_horizontal">
+	  
+	  <LinearLayout
+	    android:id="@+id/fillcontent"
+	    android:layout_width="905px" android:layout_height="544px"
+	    android:paddingTop="10dp" android:paddingRight="10dp" android:paddingLeft="10dp" android:paddingBottom="10dp"
+	    android:orientation="vertical" android:gravity="center" android:background="@drawable/gestures_show_box">
+	    
+	    <TextView
+	    	android:id="@+id/showtitle" 
+	    	android:layout_width="wrap_content" android:layout_height="80px" android:paddingBottom="10dp"
+	    	android:textSize="32sp"  android:gravity="center|bottom" android:textColor="@color/text_color" android:text="@string/show_ready_title"
+	    ></TextView>
+	    
+	    <LinearLayout
+	    	android:id="@+id/show_area"
+	    	android:layout_width="wrap_content" android:layout_height="380px"
+	    	android:orientation="horizontal" >
+	  	   <LinearLayout
+	    	android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center"
+	    	 android:layout_weight="1" android:paddingTop="10dp"  android:paddingLeft="10dp" >	
+	    	<TextView
+	    		android:id="@+id/show_present" android:lineSpacingMultiplier="1.1"
+	    		android:layout_width="450px" android:layout_height="wrap_content"	    		
+	    		android:textSize="22sp"   android:textColor="@color/text_color" android:text="@string/detail_ready_show">
+	    	</TextView>	
+	    	</LinearLayout>
+	    	
+	     	<TextView
+	    		android:layout_width="10px" android:layout_height="wrap_content">
+	    	</TextView>	
+	    	<FrameLayout
+	    		android:id="@+id/show_gesture"
+	    		android:layout_width="252px"  android:layout_height="380px" android:layout_weight="1">
+	    		<LinearLayout	    		
+		    		android:id="@+id/show_first_image"
+		    		android:layout_width="wrap_content"  android:layout_height="wrap_content" android:orientation="vertical">
+		    		
+		    		<LinearLayout
+		    			android:id="@+id/show_faceandcontroll"
+		    			android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
+		    			android:layout_weight="1" android:paddingLeft="20dp" android:gravity="center_vertical|center_horizontal">
+		    			<LinearLayout
+		    				android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical"
+		    				android:gravity="center_vertical|center_horizontal" android:layout_weight="1">
+		    				
+			    			<ImageView
+			    				android:id="@+id/show_face"
+					    		android:layout_width="wrap_content"  android:layout_height="wrap_content"
+					    		android:src="@drawable/recognition_face_miss" android:paddingBottom="10dp"
+					    		>
+			    			</ImageView>
+			    			<TextView
+			    				android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/show_face_text"
+			    				android:text="@string/show_face_string" android:textSize="22sp" android:textColor="#000000"
+			    			></TextView>
+		    			</LinearLayout>
+		    			<LinearLayout
+		    				android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical"
+		    				android:gravity="center_vertical|center_horizontal" android:layout_weight="1">
+			    			<ImageView
+			    				android:id="@+id/show_controll"
+					    		android:layout_width="wrap_content"  android:layout_height="wrap_content" android:paddingLeft="20dp"
+					    		android:src="@drawable/recognition_nocontroll" android:paddingBottom="10dp">
+			    			</ImageView>
+			    			<TextView
+			    				android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/show_controll_text"
+			    				android:text="@string/show_controll_string" android:textSize="22sp" android:textColor="#000000" android:paddingLeft="20dp"
+			    			></TextView>
+		    			</LinearLayout>
+		    		</LinearLayout>
+		    		<ImageView
+		    			android:id="@+id/show_ok"
+				    	android:layout_width="wrap_content"  android:layout_height="wrap_content" android:src="@drawable/gesture_ok"
+				    	android:paddingTop="20dp"  android:paddingLeft="20dp"
+				    	android:layout_weight="1" android:layout_gravity="center_vertical|center_horizontal">
+		    		</ImageView>
+	    		</LinearLayout>
+				<ImageView
+		    		android:id="@+id/show_gesture_action"
+		    		android:layout_width="fill_parent"  android:layout_height="fill_parent"
+		    		android:layout_gravity="center_vertical|center_horizontal">
+		    	</ImageView>
+		    	</FrameLayout>
+
+	    </LinearLayout>
+
+	    <TextView
+	    	android:id="@+id/show_page"
+	    	android:layout_width="wrap_content"  android:layout_height="wrap_content" android:gravity="bottom"
+	    	android:textSize="22sp"   android:textColor="@color/text_color" android:text="@string/show_ready_page" 
+	    	android:layout_gravity="bottom|right" android:paddingRight="30dp" 
+	    	android:paddingTop="5dp"
+	    ></TextView>
+	  </LinearLayout>
+	 
+</LinearLayout>

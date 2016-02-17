@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+    <library name="com.mediatek.common.PhotoPlayer"
+            file="/system/framework/com.mediatek.common.PhotoPlayer.jar"/>
+</permissions>

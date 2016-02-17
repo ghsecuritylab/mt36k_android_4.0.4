@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="public" author="true" classpath="lib/android.jar" destdir="doc" doctitle="MTK TV Mamager SDK" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="com.mediatek.tv,com.mediatek.tv.common,com.mediatek.tv.model" source="1.6" sourcefiles="java/com/mediatek/tv/service/BroadcastService.java,java/com/mediatek/tv/service/IService.java,java/com/mediatek/tv/service/ConfigService.java,java/com/mediatek/tv/service/ScanService.java,java/com/mediatek/tv/service/ChannelService.java,java/com/mediatek/tv/service/InputService.java" sourcepath="java" splitindex="true" use="true" version="true"/>
+    </target>
+</project>

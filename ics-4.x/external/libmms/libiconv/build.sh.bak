@@ -1,0 +1,4 @@
+export ANDROID_ROOT=/proj/mtk40532/data/p4_linux/DTV/DEV_BR/e_IDTV0801_LINUX_002119_2_ANDROID_DEV_BR/vm_linux/android/froyo-2.2
+PATH=$ANDROID_ROOT/prebuilt/linux-x86/toolchain/arm-eabi-4.4.0/bin:$PATH
+export PATH
+./configure --host=x86-linux CC=arm-eabi-gcc LD=arm-eabi-ld AR=arm-eabi-ar CFLAGS="-fno-exceptions -Wno-multichar -fPIC  -DANDROID -fmessage-length=0 -fno-strict-aliasing -Wno-unused -Winit-self -Wpointer-arith -Wpointer-arith -Wwrite-strings -Wunused -Winline -Wnested-externs -Wmissing-declarations -Wmissing-prototypes -Wno-long-long -Wfloat-equal -Wno-multichar -Wsign-compare -Wno-format-nonliteral -Wendif-labels -Wstrict-prototypes -Wdeclaration-after-statement -Wno-system-headers -nostdlib -L $ANDROID_ROOT/prebuilt/linux-x86/toolchain/arm-eabi-4.4.0/lib/gcc/arm-eabi/4.4.0 -lgcc" 

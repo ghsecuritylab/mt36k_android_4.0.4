@@ -1,0 +1,1 @@
+﻿运行UI5.0，需要将libUI5.so及libUI5Data.so两个文件push到系统system/lib/目录之下才可以正常运行

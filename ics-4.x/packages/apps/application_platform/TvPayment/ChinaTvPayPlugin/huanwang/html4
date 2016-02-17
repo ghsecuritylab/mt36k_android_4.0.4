@@ -1,0 +1,726 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="format-detection" content="telephone=no"/>
+<title>选择卡</title>
+<style type="text/css">
+* { margin: 0; padding: 0; }
+.main { width: 1280px; height: 720px; margin: 0 auto; text-align: left; background: url( img/bg2.jpg ) no-repeat center top; position: relative; }
+.tit { position: absolute; left: 113px; top: 126px; color: #FFFFFF; font-family: '黑体'; font-size: 40px; font-weight: bold; }
+.step { position: absolute; left: 118px; top: 180px; }
+.bang_new { position: absolute; left: 578px; top: 475px; }
+.go_home { position: absolute; left: 1104px; top: 657px; }
+/*this*/
+.tijiao { position: absolute; left: 208px; top: 291px; }
+.eb1 { position: absolute; left: 306px; top: 254px; }
+.eb2 { position: absolute; left: 183px; top: 204px; color: #464646; font-family: '黑体'; font-size: 40px; width: 900px; }
+.red { color: #FF0000; }
+.le { text-align: right; }
+.hhr { position: absolute; width: 798px; left: 206px; top: 277px; }
+.jiej { position: absolute; left: 438px; top: 302px; }
+.cardid { position: absolute; left: 208px; top: 359px; width: 871px; height: 124px; }
+.next { position: absolute; left: 395px; top: 516px; }
+.bangnew { position: absolute; left: 652px; top: 516px; }
+.card { position: relative; width:274px; height:52px; background:url(img/text_box2.png) no-repeat; }
+.phone { position: absolute; right: 8px; top: 10px; color: #FFFFFF; font-size:28px; }
+.selected { position: absolute; left: 7px; top: 9px; }
+</style>
+<style type="text/css">
+.tit { position: absolute; left: 105px; top: 121px; color: #FFFFFF; font-size: 48px; font-weight: bold; width: 1103px; height: 50px; text-align:center; }
+.step { position: absolute; left: 118px; top: 180px; }
+.bang_new { position: absolute; left: 578px; top: 475px; }
+.go_home { position: absolute; left: 1117px; top: 635px; }
+/*this*/
+.tijiao2 { left: 208px; position: absolute; top: 302px; }
+.eb1 { position: absolute; left: 306px; top: 254px; }
+.eb2 { position: absolute; left: 102px; top: 202px; color: #464646; font-family: '黑体'; font-size: 40px; width: 900px; }
+.red { color: #FF0000; }
+.le { text-align: right; }
+.hhr { position: absolute; width: 854px; left: 188px; top: 335px; }
+.jiej2 { left: 438px; position: absolute; top: 291px; }
+.cardid { position: absolute; left: 208px; top: 359px; width: 871px; height: 124px; }
+.next { position: absolute; left: 395px; top: 515px; }
+.bangnew { position: absolute; left: 652px; top: 515px; }
+.selected { position: absolute; left: 7px; top: 9px; }
+.credit_card { position: absolute; left: 207px; top: 335px; width: 801px; height: 181px; }
+.credit_card td { color: #464646; font-family: '黑体'; font-size: 40px; }
+.right { text-align: right; }
+.year { height: 50px; color: #ffffff; font-family: '黑体'; font-size: 40px; background:#044d63; border: 0 none; width: 120px; }
+.month { height: 50px; color: #ffffff; font-family: '黑体'; font-size: 40px; background:#044d63; border: 0 none; width: 120px; }
+.queren { position: absolute; left: 304px; top: 240px; }
+.debt_card { position: absolute; left: 207px; top: 298px; width: 800px; height: 171px; }
+.debt_card td { color: #464646; font-family: '黑体'; font-size: 40px; vertical-align:middle; }
+#merName { display: block; height: 40px; width: 290px; overflow: hidden; }
+.debt_card_password { width:300px; background:#044d63; color: #464646; font-family: '黑体'; font-size: 40px; }
+.cvn2_num { height: 50px; color: #ffffff; font-family: '黑体'; font-size: 40px; background:#044d63; border: 0 none; width: 120px; }
+.mob_num { position:absolute; left:0; top:0; z-index:10; }
+.info1 { position:absolute; left: 27px; top: 0px; font-size:40px; }
+.info2 { position:absolute; color:#FF0000; left: 268px; top: 1px; width: 267px; font-size:40px; }
+.info3 { position:absolute; left: 608px; top: 1px; font-size:40px; }
+.info4 { position:absolute; left: 769px; top: 1px; font-size:40px; width: 328px; }
+.info5 { position:absolute; left: 67px; top: 47px; font-size:40px; }
+.info6 { position:absolute; left: 269px; top: 49px; width: 263px; height:40px; font-size:40px; overflow:hidden; }
+.info7 { position:absolute; left: 569px; top: 49px; font-size:40px; }
+.info8 { position:absolute; left: 770px; top: 49px; font-size:40px; width: 329px; }
+.line { position:absolute; left: 0; top: 299px; }
+.info12 { position:absolute; left:0px; top: 0px; height:40px; font-size:30px; width: 255px; background:#044D63; color:#ffffff;border:none; }
+.info12 span { position:absolute;	left:270px;	top: 0px; height:40px;	font-size:30px;	width: 500px;}
+.errorInfo {  
+    position:absolute;
+    left:930px;
+    top: 450px; 
+    height:40px;
+    font-size:30px;
+    width: 255px;
+    color:#Ff0000;
+}
+
+
+</style>
+</head>
+<body>
+<input type="hidden" id="cardType" value="1"/>
+<input type="hidden" id="cardNo" value=""/>
+<div class="main">
+	<div class="tit" id="title"></div>
+	<div class="eb2">
+		<div class="info1">订单实付额：</div>
+		<div id="orderAmt" class="info2"></div>
+		<div class="info3">订单号：</div>
+		<div id="orderNum" class="info4"></div>
+		<div class="info5">商户信息：</div>
+		<div id="merName" class="info6"></div>
+		<div class="info7">商品信息：</div>
+		<div id="orderInfo" class="info8"></div>
+	</div>
+	<div class="line"><img src="img/line.png" /></div>
+	<div id="credit_card" class="credit_card">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="37%" height="48" class="right">支付的信用卡：</td>
+				<td width="63%"><span id="credit_card_id"></span></td>
+			</tr>
+			<tr  id="debt_card01">
+				<td height="56" class="right">信用卡有效期：</td>
+				<td><span id="CreditCardMonth"></span><span>&nbsp;月&nbsp;</span><span id="CreditCardYear"></span><span>&nbsp;年</span></td>
+			</tr>
+			<tr  id="debt_card02">
+				<td height="63" class="right">CVN2：</td>
+				<td><span id="CreditCardCVN2"></span><span>（卡背面后3位）</span></td>
+			</tr>
+		</table>
+		<div class="queren">
+			<a  href="javascript:return false" onClick="goPay();"><img  src="img/ok_pay.png"  /></a>
+		</div>
+	</div>
+	<div class="queren" id="sms_send_button01" style="display: none;">
+		<a id="sms_send_button"  href="javascript:return false" onClick="sendSmsVerifyCode();"><img  src="./img/mb_huo.png"  /></a>
+			
+	</div>
+	<div class="info12" id="pwd301" style="display: none;">
+		<input class="info12" id="pwd3" type="text" value="" maxlength="6"/><span id="smshint"></span>
+	</div>
+    <div class="errorInfo" id="errorInfo" ></div>
+	<div class="go_home">
+			<a  href="javascript:return false" onClick="redirect.goto(backURL)"><img  src="./img/back_home.png"  /></a>
+	</div>
+</div>
+<script type="text/javascript">
+//com
+var monthLengthOfNormalYear = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31); //days of month in normal year
+var monthLengthOfLeapYear = new Array(31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31); //days of month in leap year
+ var request = {
+	    getParameter : function(paras) {
+	    	  var encodeUrl = decodeURI(decodeURI(window.location.href));
+   
+        var url = encodeUrl.substr(encodeUrl.indexOf("?"));
+        
+	    	var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");   
+	    	var paraObj = {}   
+	    	for (i=0; j=paraString[i]; i++){   
+	    	paraObj[j.substring(0,j.indexOf("="))] = j.substring(j.indexOf 
+	    	("=")+1,j.length);   
+	    	}   
+	    	var returnValue = paraObj[paras];   
+	    	if(typeof(returnValue)=="undefined"){   
+	    	return "";   
+	    	}else{   
+	    	return unescape(returnValue);   
+	    	}   
+	    }
+	}
+
+var redirect = {
+    param : "",
+    setParameter: function(name, value) {
+        if(value==null) return;
+        this.param += this.param.length == 0 ? "?" : "&";
+        this.param += (name + "=" + escape(encodeURI(value)) );
+    },
+
+    goto : function(url) {
+      if(url.indexOf("?")<=0){
+    		window.location.href = url + (this.param);
+    	}else{
+    		//如果url带?号的话，后面的参数直接&加上参数
+    		if(this.param.length>0){
+    			window.location.href = url + (this.param).replace('?','&');
+    		}else{
+    			window.location.href = url + (this.param);
+    		}
+    	}
+    }
+}
+//验证是否为空
+function checkNull(str, controlName) {
+    if (str == null || str.trim() == "" || str.trim().length == 0) {
+        // alert(controlName + "不能为空！");
+        return false;
+    }
+    return true;
+}
+//通过字符串截取获取xml指定域的值，只支持单个匹配
+function getElementsFromXml(xml, tag) {
+    var startTag = "<" + tag + ">";
+    var endTag = "</" + tag + ">";
+    var startIndex = xml.indexOf(startTag);
+    var endIndex = xml.indexOf(endTag);
+    var xmlValue = xml.substring(startIndex + startTag.length, endIndex);
+    return xmlValue;
+}
+//金额格式化
+function stringToMoney(str) {
+    while (str.substring(0, 1) == "0") {
+        str = str.substr(1);
+    }
+    if (str.length < 3) {
+        while (str.length < 3)
+        {
+            str = "0" + str;
+        }
+    }
+    str = str.substring(0, str.length - 2) + "." + str.substr(str.length - 2);
+    return str;
+}
+var hint = {
+    idFucArr:{},
+    addFunc:function(id,tarId){
+       this.idFucArr[id] = tarId;
+    },
+    clean: function(obj) {
+        document.getElementById(this.idFucArr[obj.getAttribute("id")]).innerHTML = '';
+    },
+    show: function(id, message) {
+        document.getElementById(id).innerHTML = message;
+    }
+}
+//pro
+var CARD_TYPE_XPATH = "cardType";
+var CARD_NO_FMTED_XPATH = "cardNoFmted";
+var HOST_URL = request.getParameter("HOST_URL");
+var IPADDR = "192.168.17.100";
+var PORT = 9801;
+var TIMEOUT = 30;
+var ORDERNUM = "";
+var TRACENUM = "";
+var DATE="";
+var TERMTYPEID = request.getParameter("TERMTYPEID");
+var CHINFONAME = request.getParameter("CHINFONAME");
+var CHANNELTYPE = request.getParameter("CHANNELTYPE");
+var MERNAME = request.getParameter("MERNAME");
+//trans
+var TVPayTransManager = {
+    init: function(id,objectName){
+        document.getElementById(id).innerHTML = "<embed id=\""+objectName+"\" type=\"application/x-ctvpayplugin\" width='0' height='0'></embed>";
+    }
+}
+    //手机充值
+function mobileRecharge(tppAddress, tppPort, termUnitNo, userId, pubKeyIndex, termStatus, traceNum, merID, merName, date, acqBIN, fwdBIN, tp, termID, timeout, extension, cardId, orderNum, orderInfo,cardType, cardPassword,cardExpireDate,cardCVN2,tranCheckMode,secRelContInfo,entryCode,mobileNo,purchAmount,dynamicPasswd,nodYSTAuthID,safetyVerifyMode){
+	var outAccount = cardId;
+	var inAccount = "";
+	var transPasswd = cardPassword;
+	var expiryDate = cardExpireDate;
+	var dynamicPasswd = dynamicPasswd;
+	var random = "0";
+	var cvn2 = cardCVN2;
+	var mobileNo = telNo ;
+	var msgstr =  "<?xml version='1.0' encoding='UTF-8' ?><TVPay><TVPaybody><Msg><version>1000</version><typeID>0200</typeID></Msg><TermStatus>"+termStatus+"</TermStatus><ProcessingCode>000000</ProcessingCode><EntryCode>"+entryCode+"</EntryCode><xclass>XF</xclass><PosCondCode>81</PosCondCode><orderNum>"+orderNum+"</orderNum><acctNum>"+cardId+"</acctNum><cardType>"+cardType+"</cardType><safetyVerifyMode>"+safetyVerifyMode+"</safetyVerifyMode><Merchant><termUnitNo>"+termUnitNo+"</termUnitNo><termTypeID>"+TERMTYPEID+"</termTypeID><acqBIN>"+acqBIN+"</acqBIN><fwdBIN>"+fwdBIN+"</fwdBIN><userID>"+userId+"</userID><merID>"+merID+"</merID><name>"+merName+"</name><tp>"+tp+"</tp><OrderInfo>"+orderInfo+"</OrderInfo></Merchant><Purchase><termID>"+termID+"</termID><termAcAbility>0</termAcAbility><icCondCode>0</icCondCode><traceNum>"+traceNum+"</traceNum><date>"+date+"</date><purchAmount>"+purchAmount+"</purchAmount><currency>156</currency></Purchase><channelType>"+CHANNELTYPE+"</channelType><PubKeyIndex>"+pubKeyIndex+"</PubKeyIndex><tranCheckMode>"+tranCheckMode+"</tranCheckMode><SecRelContInfo>"+secRelContInfo+"</SecRelContInfo><Extension>"+extension+"</Extension><CntInfo><mobile>"+mobileNo+"</mobile></CntInfo>"+nodYSTAuthID+"</TVPaybody><SecureData></SecureData><Mac></Mac></TVPay>";	
+	var answer=tvPay(tppAddress,tppPort,timeout,0,outAccount.toString(),inAccount.toString(),cardPassword.toString(),expiryDate.toString(),dynamicPasswd,random.toString(),cvn2.toString(),msgstr,null);
+	return answer;
+}
+//缴费
+function billPayment(cardPassword,entryCode,safetyVerifyMode,secRelContInfo,tranCheckMode,cardExpireDate,cardCVN2,dynamicPasswd,nodYSTAuthID){
+	var outAccount = cardNo;
+	var inAccount = "";
+	var transPasswd = cardPassword;
+	var expiryDate = cardExpireDate;
+	var dynamicPasswd = dynamicPasswd;
+	var random = "";
+	var cvn2 = cardCVN2;
+	var mobileNo = telNo ;
+	var msgstr = "<?xml version='1.0' encoding='UTF-8' ?><TVPay><SecureData></SecureData><SecureData1></SecureData1><TVPaybody><TermStatus>"+termStatus+"</TermStatus><Msg><version>0100</version><typeID>0200</typeID></Msg><ProcessingCode>190000</ProcessingCode><EntryCode>"+entryCode+"</EntryCode><PosCondCode>81</PosCondCode><xclass>KP</xclass><Bill><Type>"+billType+"</Type><Number>"+billNumber+"</Number><areaCode>"+areaCode+"</areaCode><addAreaCode>0000</addAreaCode><Month>"+billMonth+"</Month></Bill><acctNum>"+cardNo+"</acctNum><cardType>"+cardType+"</cardType><safetyVerifyMode>"+safetyVerifyMode+"</safetyVerifyMode><tranCheckMode>"+tranCheckMode+"</tranCheckMode><Merchant><acqBIN>"+acqBIN+"</acqBIN><fwdBIN>"+fwdBIN+"</fwdBIN><termUnitNo>"+termUnitNo+"</termUnitNo><userID>"+userId+"</userID><termTypeID>"+TERMTYPEID+"</termTypeID><merID>"+merID+"</merID><name>"+merName+"</name></Merchant><Purchase><termID>"+termID+"</termID><termAcAbility>5</termAcAbility><icCondCode>0</icCondCode><traceNum>"+traceNum+"</traceNum><date>"+date+"</date><purchAmount>"+purchAmount+"</purchAmount><currency>156</currency></Purchase><channelType>"+CHANNELTYPE+"</channelType><SecRelContInfo>"+secRelContInfo+"</SecRelContInfo><PubKeyIndex>"+pubKeyIndex+"</PubKeyIndex><details>"+details+"</details><addData>"+addData+"</addData><CntInfo><mobile>"+mobileNo+"</mobile></CntInfo>"+nodYSTAuthID+"</TVPaybody></TVPay>";
+	var answer=tvPay(tppAddress,tppPort,timeout,0,outAccount.toString(),inAccount.toString(),cardPassword.toString(),expiryDate.toString(),dynamicPasswd,random.toString(),cvn2.toString(),msgstr,null);
+	return answer;
+}
+//消费
+function pay(tppAddress, tppPort, termUnitNo, userId, pubKeyIndex, termStatus, traceNum, merID, merName, date, acqBIN, fwdBIN, tp, termID, timeout, cardNo, orderNum, orderInfo,cardType, cardPassword,cardExpireDate,cardCVN2,tranCheckMode,secRelContInfo,entryCode,mobileNo,purchAmount,safetyVerifyMode,certType,certiCode,dynamicPasswd,nodYSTAuthID){
+	var noticeURL="";
+    if(request.getParameter("noticeURL")!=null&&request.getParameter("noticeURL")!="")
+	noticeURL="<noticeURL>"+request.getParameter("noticeURL")+"</noticeURL>";
+	var msgstr = "<?xml version='1.0' encoding='UTF-8'?><TVPay><TVPaybody><Msg><version>1000</version><typeID>0200</typeID></Msg><TermStatus>"+termStatus+"</TermStatus><ProcessingCode>000000</ProcessingCode><xtype>19</xtype><EntryCode>"+entryCode+"</EntryCode><xclass>XF</xclass><PosCondCode>81</PosCondCode><orderNum>"+orderNum+"</orderNum><acctNum>"+cardNo+"</acctNum><cardType>"+cardType+"</cardType><safetyVerifyMode>"+safetyVerifyMode+"</safetyVerifyMode><Merchant><termUnitNo>"+termUnitNo+"</termUnitNo><termTypeID>"+TERMTYPEID+"</termTypeID><acqBIN>"+acqBIN+"</acqBIN><fwdBIN>"+fwdBIN+"</fwdBIN><userID>"+userId+"</userID><merID>"+merID+"</merID><name>"+merName+"</name><tp>"+tp+"</tp><OrderInfo>"+orderInfo+"</OrderInfo></Merchant><Purchase><icCondCode>0</icCondCode><termAcAbility>0</termAcAbility><termID>"+termID+"</termID><traceNum>"+traceNum+"</traceNum><date>"+date+"</date><purchAmount>"+purchAmount+"</purchAmount><currency>156</currency></Purchase><ChInfo><certType>"+certType+"</certType><number>"+certiCode+"</number></ChInfo><CntInfo><mobile>"+mobileNo+"</mobile></CntInfo><channelType>"+CHANNELTYPE+"</channelType><PubKeyIndex>"+pubKeyIndex+"</PubKeyIndex><tranCheckMode>"+tranCheckMode+"</tranCheckMode><SecRelContInfo>"+secRelContInfo+"</SecRelContInfo>"+nodYSTAuthID+"</TVPaybody>"+noticeURL+"<SecureData></SecureData><Mac></Mac>"+"</TVPay>";
+	var outAccount = cardNo;
+	var inAccount = "";
+	var random = "0";
+	var dynamicPasswd = dynamicPasswd;
+var answer=tvPay(tppAddress,tppPort,timeout,0,outAccount.toString(),inAccount.toString(),cardPassword.toString(),cardExpireDate.toString(),dynamicPasswd,random.toString(),cardCVN2.toString(),msgstr,null);
+return answer;
+} 
+function  tvPay(IPADDR,PORT,TIMEOUT,TVP_TRANSINFO,outAccount,inAccount,cardPassword,expiryDate,dynamicPasswd,randomString,cvn2,msgstr,embedObj){
+		 var embedObj=document.getElementById("embedObj");
+		 PORT=Number(PORT);
+		 TIMEOUT=Number(TIMEOUT);
+		//调用我们自己的支付控件
+		var returnString = embedObj.LandiProcessControl(IPADDR,PORT,TIMEOUT,0,outAccount.toString(),inAccount.toString(),cardPassword.toString(),expiryDate.toString(),dynamicPasswd.toString(),randomString.toString(),cvn2.toString(),msgstr,"99");
+		var ret=returnString.split('\r\n');
+		//兼容emu环境
+		if(ret.length==4){
+			ret[1]=ret[1]+ret[2];
+		}
+		return ret;
+}
+var UI = {
+    type:0,//0 test; 1 tv
+    UI_CERT:null,
+    UI_MOBILE:null,
+    UI_DEBT_CARD_ID:null,      //借记卡卡号UI
+    UI_DEBT_CARD_PIN:null,     //借记卡密码UI
+    UI_SMS_CODE:null,          //手机动态码UI
+    UI_CREDIT_CARD_ID:null,    //信用卡卡号UI
+    UI_CREDIT_CARD_CVN2:null,  //信用卡ＣＶＮ２UI
+    UI_CREDIT_CARD_YEAR:null,  // 信用卡有效期（年份）UI
+    UI_CREDIT_CARD_MONTH:null, //信用卡有效期（月份） UI
+    init : function(keyBoardName) {
+        if (this.type == 1) {
+            var msgstr = "<Req><ReqType>0002</ReqType><Length>18|11|22|6|8|22|3|2|2</Length><ActionName>" + keyBoardName + "</ActionName></Req>";
+            var answer = tvPay("999.999.999.999", 9999, 1000, "", "", "", "", "", "", "", msgstr, null);
+            this.UI_CERT = getElementsFromXml(answer[1], "Cert");
+            this.UI_MOBILE = getElementsFromXml(answer[1], "Mobile");
+            this.UI_DEBT_CARD_ID = getElementsFromXml(answer[1], "DebtCard");
+            this.UI_DEBT_CARD_PIN = getElementsFromXml(answer[1], "DebtPin");
+            this.UI_SMS_CODE = getElementsFromXml(answer[1], "SmsCode");
+            this.UI_CREDIT_CARD_ID = getElementsFromXml(answer[1], "CreditCard");
+            this.UI_CREDIT_CARD_CVN2 = getElementsFromXml(answer[1], "CVN2");
+            this.UI_CREDIT_CARD_YEAR = getElementsFromXml(answer[1], "Year");
+            this.UI_CREDIT_CARD_MONTH = getElementsFromXml(answer[1], "Month");
+        } else if (this.type == 0) {
+            var length = "18|11|22|6|8|22|3|2|2".split("|", -1);
+            this.UI_CERT = "<input class=\"cert_input\" type=\"text\" id=\"certNo\" maxlength=\"" + length[0] + "\" onfocus=\"hint.clean(this)\"/>"
+            this.UI_MOBILE = "<input class=\"mobile_input\" type=\"text\" id=\"mobile\" maxlength=\"" + length[1] + "\" onfocus=\"hint.clean(this)\"/>"
+            this.UI_DEBT_CARD_ID = "<input class=\"debt_card_num\" type=\"text\" id=\"debt_cardId\" maxlength=\"" + length[2] + "\" onfocus=\"" + keyBoardName + ".close()\"/>"
+            this.UI_DEBT_CARD_PIN = "<input class=\"debt_card_password\" type=\"password\" id=\"debt_pin\" maxlength=\"" + length[3] + "\" onfocus=\"" + keyBoardName + ".open(this)\" />"
+            this.UI_SMS_CODE = "<input class=\"mobile_code\" type=\"text\" id=\"verifyCode\" maxlength=\"" + length[4] + "\" onfocus=\"" + keyBoardName + ".close()\" disabled=\"true\" />"
+            this.UI_CREDIT_CARD_ID = "<input class=\"credit_card_num\" type=\"text\" id=\"credit_cardId\" maxlength=\"" + length[5] + "\" onfocus=\"" + keyBoardName + ".close()\"/>"
+            this.UI_CREDIT_CARD_CVN2 = "<input class=\"cvn2_num\" type=\"text\" id=\"credit_cvn2\" maxlength=\"" + length[6]  + "\"/>"
+            this.UI_CREDIT_CARD_YEAR = "<input class=\"year\" type=\"text\" id=\"credit_year\" maxlength=\"" + length[7] + "\" />"
+            this.UI_CREDIT_CARD_MONTH = "<input class=\"month\" type=\"text\" id=\"credit_month\" maxlength=\"" + length[8]  + "\" />";
+      }
+    }
+}
+var KeyBoardUI = {
+    type:0,
+    UI_KEY_ARRAY:new Array(10),
+    UI_BACK:null,
+    UI_OK:null,
+    imgPath:null,
+    init : function(keyBoardName) {
+        if (this.type == 1) {
+            var msgstr = "<Req><ReqType>0001</ReqType><Path>" + this.imgPath + "</Path><ActionName>" + keyBoardName + "</ActionName></Req>";
+            var answer = tvPay("999.999.999.999", 9999, 1000, "", "", "", "", "", "", "", msgstr, null);
+            this.UI_BACK = getElementsFromXml(answer[1], "KeyBack");
+            this.UI_OK = getElementsFromXml(answer[1], "KeyOk");
+            for (var i = 0; i < 10; i++) {
+                this.UI_KEY_ARRAY[i] = getElementsFromXml(answer[1], "Key" + i);
+            }
+        } else if (this.type == 0) {
+ 			this.UI_BACK = " <a id=\"KeyBoard_Back\" href=\"javascript:return false\" onclick=\"" + keyBoardName + ".backPin()\"><img  src=\"" + this.imgPath + "houtui.png\" /></a> ";
+            
+            this.UI_OK = " <a  id=\"KeyBoard_OK\" href=\"javascript:return false\" onclick=\"" + keyBoardName + ".close(true)\" > <img  src=\"" + this.imgPath + "queren.png\" /> </a> ";
+                      
+
+            var charr = this.getRandomArray();
+            for (var i = 0; i < charr.length; i++) {
+                this.UI_KEY_ARRAY[i] = "<a id=\"KeyBoardKey_" + i + "\"  href=\"javascript:return false\"  ><img  src=\"" + this.imgPath + charr[i] + ".png\"  onclick=\"" + keyBoardName + ".addPin(" + charr[i] + ")\"/></a>";
+            }
+        }
+    },
+    getRandomArray : function() {
+        var arr = new Array();
+        while (arr.length < 10) {
+            var num = Math.floor(Math.random() * 10);
+            if (arr.toString().indexOf(num + "") == -1) {
+                arr.push(num);
+            }
+        }
+        return arr;
+    }
+}
+//transType
+var TransType = {
+    MOBILE_RECHARGE:'0001',    //手机充值
+    MOBILE_PAYMENT:'0002',     //手机缴费
+    PAYMENT:'0003',            //缴费
+	CREDIT_CARD_PAYMENT:'0006',  //信用卡还款
+	PURCHASE:'1001'             //消费
+}
+    UI.init("keyBoard");
+    hint.show('CreditCardCVN2',UI.UI_CREDIT_CARD_CVN2);
+    hint.show('CreditCardYear',UI.UI_CREDIT_CARD_YEAR);
+    hint.show('CreditCardMonth',UI.UI_CREDIT_CARD_MONTH);
+    var userId = request.getParameter("userId");
+     redirect.setParameter("userId", userId);
+    var termUnitNo = request.getParameter("termUnitNo");
+    redirect.setParameter("termUnitNo", termUnitNo);
+var transType = request.getParameter("transType");
+var title = request.getParameter("title");
+var orderNum = request.getParameter("orderNum");
+var orderInfo = request.getParameter("orderInfo");
+var tppAddress = request.getParameter("tppAddress");
+var tppPort = request.getParameter("tppPort");
+var pubKeyIndex = request.getParameter("pubKeyIndex");
+var termStatus = request.getParameter("termStatus");
+var traceNum = request.getParameter("traceNum");
+var merID = request.getParameter("merID");
+var merName = request.getParameter("merName");
+var date = request.getParameter("date");
+var acqBIN = request.getParameter("acqBIN");
+var fwdBIN = request.getParameter("fwdBIN");
+var tp = request.getParameter("tp");
+var termID = request.getParameter("termID");
+var timeout = request.getParameter("timeout");
+var telNo = request.getParameter("telNo");
+var purchAmount = request.getParameter("purchAmount");
+var extension = request.getParameter("extension");
+var billDate = request.getParameter("billDate")
+var backURL = request.getParameter("backURL");
+var orderAmt = stringToMoney(purchAmount) + "元";
+var cardNo = request.getParameter("cardNo");
+redirect.setParameter("cardNo", cardNo);    
+var cardType = request.getParameter("cardType");
+var storeCardNum=request.getParameter("storeCardNum");
+var billNumber = request.getParameter("billNumber");
+var resultURL = request.getParameter("resultURL");
+var billType = request.getParameter("billType");
+var addAreaCode = request.getParameter("addAreaCode");
+var billMonth = request.getParameter("billMonth");
+var areaCode = request.getParameter("areaCode");
+var instCode = request.getParameter("instCode");
+var instType = request.getParameter("instType");
+var payType = request.getParameter("payType");
+var payAccNo = request.getParameter("payAccNo");
+var instCode = request.getParameter("instCode");
+var details = request.getParameter("details");
+var addData = request.getParameter("addData");
+var regionCode = request.getParameter("regionCode");
+document.getElementById("credit_card_id").innerHTML = cardNo;
+document.getElementById("title").innerHTML = title;
+document.getElementById("orderAmt").innerHTML = orderAmt;
+document.getElementById("orderNum").innerHTML = orderNum;
+document.getElementById("merName").innerHTML = merName;
+document.getElementById("orderInfo").innerHTML = orderInfo;
+//添加控制参数
+var bizCtlC = request.getParameter("bizCtlC");
+if(bizCtlC=="0") //隐藏交易密码
+	{
+	document.getElementById("pwd301").style.display="none";
+	document.getElementById("sms_send_button01").style.display="none";
+	document.getElementById("debt_card01").style.display="none";
+	document.getElementById("debt_card02").style.display="none";
+	}
+else if(bizCtlC=="1")//跟原来的一样
+	{
+	document.getElementById("pwd301").style.display="none";
+	document.getElementById("sms_send_button01").style.display="none";
+	}
+else if(bizCtlC=="2")//有动态码
+	{
+	document.getElementById("pwd301").style.display="block";
+	document.getElementById("sms_send_button01").style.display="block";
+	document.getElementById("sms_send_button01").style.top="500px";
+	document.getElementById("sms_send_button01").style.left="230px";
+	document.getElementById("pwd301").style.top="500px";
+	document.getElementById("pwd301").style.left="504px";
+	}
+else //有动态码并且先发送查询交易
+	{
+	document.getElementById("pwd301").style.display="block";
+	document.getElementById("sms_send_button01").style.display="block";
+	document.getElementById("sms_send_button01").style.top="500px";
+	document.getElementById("sms_send_button01").style.left="230px";
+	document.getElementById("pwd301").style.top="500px";
+	document.getElementById("pwd301").style.left="504px";
+	}
+var traceNums= new Array();
+traceNums = request.getParameter("traceNums").split(",");
+var traceArrayNo = 1;//0用来发送查询
+//手机号码
+var mobile=request.getParameter("telNo");
+//获取验证码
+function sendSmsVerifyCode() {
+	if(traceArrayNo==traceNums.length)
+		{
+		hint.show("smshint","您获取的验证码已超过限制数");
+		return;
+		}
+  var  traceNuma = traceNums[traceArrayNo];
+  var  datea = request.getParameter("dates");
+  var 	orderNuma = datea+traceNuma;
+	traceArrayNo++;
+	var result =sendMobilePswd(termUnitNo,userId,"1",cardNo,'','','','0110010010000000','012',mobile,orderNuma,datea,traceNuma);
+ 	if(result[0]=='00'){
+		hint.show("smshint","动态码成功发送到 "+mobile);
+ 	}else{
+		hint.show("smshint","发送手机动态码超时");
+	}
+}
+
+//发送手机动态密码
+function sendMobilePswd(termUnitNo,userId,cardType,cardId,cardPassword,cardExpireDate,cardCVN2,tranCheckMode,entryCode,mobileNo,orderNuma,datea,traceNuma){
+	var msgstr = "<?xml version='1.0' encoding='UTF-8' ?><TVPay><Mac></Mac><SecureData>0</SecureData><TVPaybody><TermStatus>0</TermStatus><ProCode></ProCode><Msg><version>1000</version><typeID>0200</typeID></Msg><ProcessingCode>340000</ProcessingCode><EntryCode>"+entryCode+"</EntryCode><PosCondCode>00</PosCondCode><acctNum>"+cardId+"</acctNum><cardType>"+cardType+"</cardType><Merchant><termUnitNo>"+termUnitNo+"</termUnitNo><termTypeID>"+TERMTYPEID+"</termTypeID><acqBIN>"+acqBIN+"</acqBIN><fwdBIN>"+fwdBIN+"</fwdBIN><userID>"+userId+"</userID><merID>"+merID+"</merID><name>"+merName+"</name></Merchant><Purchase><icCondCode>0</icCondCode><termAcAbility>0</termAcAbility><termID>"+termID+"</termID><traceNum>"+traceNuma+"</traceNum><date>"+datea+"</date></Purchase><RcvInstId></RcvInstId><ChInfo><name>"+CHINFONAME+"</name></ChInfo><CntInfo><mobile>"+mobileNo+"</mobile></CntInfo><PubKeyIndex>"+pubKeyIndex+"</PubKeyIndex><tranCheckMode>"+tranCheckMode+"</tranCheckMode><Extension></Extension></TVPaybody></TVPay>";
+	var outAccount = cardId;
+	var inAccount = "0";
+	var transPasswd = cardPassword;
+	var expiryDate = cardExpireDate;
+	var dynamicPasswd = "0";
+	var random = "0";
+	var cvn2 = cardCVN2;
+var answer=tvPay(tppAddress,tppPort,timeout,0,outAccount.toString(),inAccount.toString(),cardPassword.toString(),expiryDate.toString(),dynamicPasswd,random.toString(),cvn2.toString(),msgstr,null);
+return answer;
+}
+//余额查询
+function balanceQuery(termUnitNo, userID, cardId, cardType, cardPassword,tranCheckMode,secRelContInfo,entryCode,certiCode,mobileNo,safetyVerifyMode,dynamicPasswd,cardExpireDate,cardCVN2){
+	var  datea = request.getParameter("dates");
+	var msgstr =  "<?xml version='1.0' encoding='UTF-8' ?><TVPay><TVPaybody><TermStatus>0</TermStatus><Msg><version>1000</version><typeID>0200</typeID></Msg><ProcessingCode>300000</ProcessingCode><EntryCode>"+entryCode+"</EntryCode><PosCondCode>00</PosCondCode><xclass>BQ</xclass><acctNum>"+cardId+"</acctNum><cardType>"+cardType+"</cardType><safetyVerifyMode>"+safetyVerifyMode+"</safetyVerifyMode><Merchant><acqBIN>"+acqBIN+"</acqBIN><fwdBIN>"+fwdBIN+"</fwdBIN><termUnitNo>"+termUnitNo+"</termUnitNo><userID>"+userID+"</userID><termTypeID>"+TERMTYPEID+"</termTypeID><merID>"+merID+"</merID><name>"+merName+"</name></Merchant><Purchase><termID>"+termID+"</termID><termAcAbility>0</termAcAbility><icCondCode>0</icCondCode><traceNum>"+traceNums[0]+"</traceNum><date>"+datea+"</date><currency>156</currency></Purchase><ChInfo><certType>01</certType><number>"+certiCode+"</number><name>"+CHINFONAME+"</name></ChInfo><CntInfo><mobile>"+mobileNo+"</mobile></CntInfo><SecRelContInfo>"+secRelContInfo+"</SecRelContInfo><PubKeyIndex>"+pubKeyIndex+"</PubKeyIndex><Extension>0</Extension><tranCheckMode>"+tranCheckMode+"</tranCheckMode><channelType>"+CHANNELTYPE+"</channelType><reqYSTAuthID>1</reqYSTAuthID></TVPaybody><SecureData></SecureData><Mac></Mac></TVPay>";
+	var outAccount = cardId;
+	var inAccount = "0";
+	var transPasswd = cardPassword;
+	var expiryDate = cardExpireDate;
+	var dynamicPasswd = dynamicPasswd;
+	var random = "0";
+	var cvn2 =cardCVN2;
+var answer=tvPay(tppAddress,tppPort,timeout,0,outAccount.toString(),inAccount.toString(),cardPassword.toString(),expiryDate.toString(),dynamicPasswd,random.toString(),cvn2.toString(),msgstr,null);
+return answer;
+}
+function goPay() {
+    var answer = "";
+        var credit_year = document.getElementById("credit_year").value;
+        var credit_month = document.getElementById("credit_month").value;
+
+        var cardExpireDate = "" + credit_year + credit_month;
+        var cardCVN2 = document.getElementById("credit_cvn2").value;
+        var cardPassword = "";
+        var tranCheckMode = "0100010000000000";
+        var secRelContInfo = "1000000000000000";
+        var entryCode = "012";
+        var mobileNo = telNo;
+        var safetyVerifyMode = "1";
+        var certType = "01";
+        var certiCode = "";
+        //余额返回
+        var nodYSTAuthID="";
+        //动态码
+        var dynamicPasswd=document.getElementById("pwd3").value;
+        //添加验证
+        //月
+        if(bizCtlC!="0"&&checkTableInput.chkMonth(credit_month)){
+            document.getElementById("errorInfo").innerHTML = checkTableInput.chkMonth(credit_month);
+        	return;
+        }
+        //年
+        if(bizCtlC!="0"&&checkTableInput.chkYear(credit_year)){
+            document.getElementById("errorInfo").innerHTML = checkTableInput.chkYear(credit_year);
+            return;
+        }
+        //cv2
+        if(bizCtlC!="0"&&checkTableInput.chkCvnNum(cardCVN2)){
+            document.getElementById("errorInfo").innerHTML = checkTableInput.chkCvnNum(cardCVN2);
+        	return;
+        }
+        //动态密码
+        if(bizCtlC!="0"&&bizCtlC!="1"&&checkTableInput.chkDynamicPwd(dynamicPasswd)){
+            //document.getElementById("errorInfo").innerHTML = checkTableInput.chkDynamicPwd(dynamicPasswd);
+            	hint.show("smshint",checkTableInput.chkDynamicPwd(dynamicPasswd));
+        	return;
+        }
+        if(dynamicPasswd!=null&&dynamicPasswd!="")
+	    	tranCheckMode = "0100010010000000";
+        //safetyVerifyMode根据bizCtlC=
+    	if(bizCtlC=="0") //隐藏交易密码safe=1
+    		safetyVerifyMode="1";
+    	else if(bizCtlC=="1")//safe=1
+    		safetyVerifyMode="1";
+    	else if(bizCtlC=="2")//safe=3
+    		safetyVerifyMode="3";
+    	else //safe=2
+    	{
+    		safetyVerifyMode="2";//设置
+    		//发起查询交易
+    		  var answer =balanceQuery(termUnitNo, userId, cardNo, "1", cardPassword,tranCheckMode,secRelContInfo,entryCode,certiCode,mobileNo,"0","",cardExpireDate,cardCVN2);
+    		  if (answer[0]== "00") {
+                  var balance = getElementsFromXml(answer[1], "addnAmount");
+                  if (balance == null) {
+                      redirect.setParameter("errMsg","身份认证失败");
+                      hint.show("smshint","身份认证失败");
+                      return;
+                  } else {
+                      balance = balance.substring(28, 40);
+                      balance = stringToMoney(balance);
+                     // alert(balance);
+                      //返回余额查询
+                      var YSTAuthID= getElementsFromXml(answer[1], "YSTAuthID");
+                      nodYSTAuthID="<YSTAuthID>"+YSTAuthID+"</YSTAuthID>";
+                  }
+              } else{
+            	  hint.show("smshint","身份认证失败");
+            	  return;
+              }		
+    	}
+    if (transType == TransType.MOBILE_RECHARGE) {//手机充值
+        var mobileNo = telNo ;
+        answer = mobileRecharge(tppAddress, tppPort, termUnitNo, userId, pubKeyIndex, termStatus, traceNum, merID, merName, date, acqBIN, fwdBIN, tp, termID, timeout, extension, cardNo, orderNum, orderInfo, cardType, cardPassword, cardExpireDate, cardCVN2, tranCheckMode, secRelContInfo, entryCode, mobileNo, purchAmount,dynamicPasswd,nodYSTAuthID,safetyVerifyMode);
+    } else if(transType == TransType.PAYMENT){
+		answer = billPayment(cardPassword,entryCode,safetyVerifyMode,secRelContInfo,tranCheckMode,cardExpireDate,cardCVN2,dynamicPasswd,nodYSTAuthID);
+		redirect.setParameter("success", answer[0]);
+		redirect.setParameter("areaCode",regionCode);
+		redirect.setParameter("instCode",instCode);
+		redirect.setParameter("instType",instType);
+		redirect.setParameter("payType",payType);
+		redirect.setParameter("payAccNo",payAccNo);
+		redirect.setParameter("backURL", backURL);
+	}
+	else{//消费
+        if (mobileNo == null)
+            mobileNo = "";
+			
+        answer = pay(tppAddress, tppPort, termUnitNo, userId, pubKeyIndex, termStatus, traceNum, merID, merName, date, acqBIN, fwdBIN, tp, termID, timeout, cardNo, orderNum, orderInfo, cardType, cardPassword, cardExpireDate, cardCVN2, tranCheckMode, secRelContInfo, entryCode, mobileNo, purchAmount, safetyVerifyMode, certType, certiCode,dynamicPasswd,nodYSTAuthID);
+    }
+	goResult(answer[0]);
+}
+
+
+function goResult(rspCode){
+	if (rspCode == "00") {
+			//页面跳转
+		redirect.setParameter("transType", transType);
+		redirect.setParameter("billMonth", billDate);
+		redirect.setParameter("orderDate", date);
+		redirect.setParameter("orderId", orderNum);
+		redirect.setParameter("transAmt", orderAmt);
+		redirect.setParameter("backURL", backURL);
+		redirect.setParameter("transStatus", rspCode);
+			
+		redirect.goto('./paySuccess.html');
+        
+    } else {		
+        //页面跳转
+		redirect.setParameter("transType", transType);
+        redirect.setParameter("billMonth", billDate);
+        redirect.setParameter("orderDate", date);
+        redirect.setParameter("orderId", orderNum);
+        redirect.setParameter("transAmt", orderAmt);
+        redirect.setParameter("backURL", backURL);
+        redirect.setParameter("transStatus", rspCode);
+        redirect.goto('./payError.html');
+        
+    }
+}
+
+</script> 
+<script>
+//页面返回用的的URL
+var backURL = request.getParameter("backURL"); 
+if(!backURL){
+	backURL = "./index.html";
+}
+</script>
+<script type="text/javascript">
+var checkTableInput = {
+	msgCvn2 :["请输入CVN2","CVN2位数错误","CVN2输入错误"], //信用卡CVN2
+	msgMonth :["请输入有效期月份","有效期月份错误","有效期月份不是数字"], //信用卡月份
+	msgYear :["请输入有效期年份","有效期年份错误","有效期年份不是数字"], //信用卡年份
+	msgCreditcardNum :["请输入信用卡卡号","信用卡卡号错误","卡号包含错误字符"], //信用卡卡号
+	msgDynamicPwd :["请输入手机验证码","手机验证码位数错误","手机验证码输入错误"],//动态密码
+	//验证CVN2
+	chkCvnNum : function(cvnNum){
+		if (cvnNum == "" || cvnNum == null || cvnNum == "null" || cvnNum.length == 0) {
+			return this.msgCvn2[0]
+		} else if (cvnNum.length!=3 ) {
+			return this.msgCvn2[1]
+		}else if(isNaN(cvnNum)){
+			return this.msgCvn2[2]
+		} else {
+			return false
+		};
+	},
+	//验证信用卡月份
+	chkMonth : function(month){
+		if (month == "" || month == null || month == "null" || month.length == 0) {
+			return this.msgMonth[0]
+		} else if (month.length>2) {
+			return this.msgMonth[1]
+		} else if (month>12||month<=0) {
+			return this.msgMonth[1]
+		} else if (isNaN(month)){
+			return this.msgMonth[2]
+		} else {
+			return false
+		};
+	},
+
+	//验证信用卡年份
+	chkYear : function(year){
+		if (year == "" || year == null || year == "null" || year.length == 0) {
+			return this.msgYear[0]
+		} else if (year.length!=2 ) {
+			return this.msgYear[1]
+		} else if (year>99||year<12) {
+			return this.msgYear[1]
+		} else if (isNaN(year)) {
+			return this.msgYear[2]
+		} else {
+			return false
+		};
+	},
+
+	//验证信用卡卡号
+	chkCreditcardNum : function(creditcardNum){
+		if (creditcardNum == "" || creditcardNum == null || creditcardNum == "null" || creditcardNum.length == 0) {
+			return this.msgCreditcardNum[0]
+		} else if (creditcardNum.length!=16 ) {
+			return this.msgCreditcardNum[1]
+		} else if (isNaN(creditcardNum)) {
+			return this.msgCreditcardNum[2]
+		} else {
+			return false
+		};
+	},
+	//判断动态码
+		chkDynamicPwd : function(dynamicPwd){
+		if (dynamicPwd == "" || dynamicPwd == null || dynamicPwd == "null" || dynamicPwd.length == 0) {
+			return this.msgDynamicPwd[0]
+		} else if (dynamicPwd.length!=6) {
+			return this.msgDynamicPwd[1]
+		} else if (isNaN(dynamicPwd)) {//判断是否是数字
+			return this.msgDynamicPwd[2]
+		} else {
+			return false
+		};
+	}
+}
+</script>
+</body>
+<div id='embedObjDiv' ></div>
+<script type="text/javascript">
+TVPayTransManager.init('embedObjDiv','embedObj');
+</script>
+</html>

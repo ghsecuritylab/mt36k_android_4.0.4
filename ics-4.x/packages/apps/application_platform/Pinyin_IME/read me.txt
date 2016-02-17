@@ -1,0 +1,2 @@
+1.将libjni_pinyinime.so文件拷贝到系统/system/lib/下
+2.将PinyinIME.apk push到系统/system/app/下

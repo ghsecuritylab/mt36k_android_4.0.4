@@ -1,0 +1,19 @@
+{
+    "sourceList":[
+        {
+            "clientType": "TCL-CN-MT36K-E5690A-3DG",
+            "projectID":[
+                25,26,27
+             ],
+            "ATV":1,
+            "DTV":1,
+            "HDMI1":1,
+            "HDMI2":1,
+            "AV1":1,
+            "AV2":1,
+            "YPBPR":1,
+            "VGA":1,
+            "USB":1
+        }
+    ]
+}

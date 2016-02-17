@@ -1,0 +1,14 @@
+# mount point	fstype		device
+
+/mnt/usb		vfat		/dev/block/sda1
+/mnt/sdcard		vfat	/dev/block/mmcblk0p1
+/system		ubifs		/dev/ubi1_0
+/cache		ubifs		/dev/ubi3_0
+/data		ubifs		/dev/ubi2_0
+/recovery	mtd 		recovery
+/misc 		mtd			misc
+/boot		mtd			boot 
+/aq			mtd			aq  
+/pq			mtd			pq
+/uboot_env	mtd			uboot_env
+/uboot      mtd         uboot

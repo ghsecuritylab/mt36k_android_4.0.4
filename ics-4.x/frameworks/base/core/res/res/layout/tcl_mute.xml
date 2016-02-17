@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	>
+
+	<!-->[E:]Mute icon <-->
+	<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="1280dip" 
+	android:layout_height="fill_parent"
+	android:layout_gravity="right|bottom"	
+	android:layout_marginBottom="38px"
+	android:layout_marginRight="68px">
+	
+				<ImageView android:id="@+id/muteicon" 
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"
+				android:src="@drawable/mute_tcl"
+				android:layout_gravity="right">
+				</ImageView>	
+				
+	</FrameLayout>
+</FrameLayout>

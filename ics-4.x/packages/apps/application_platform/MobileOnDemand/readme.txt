@@ -1,0 +1,2 @@
+/system/lib
+	libepgNDK.so
